@@ -106,95 +106,88 @@ document.addEventListener('DOMContentLoaded', () => {
   if (allMenuClose) allMenuClose.addEventListener('click', closeAllMenu);
   document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeAllMenu(); });
 
-  // ---------- Account dropdown (basic) ----------
+  // ---------- Account dropdown (simplified and fixed) ----------
   const account = document.getElementById('loginBtn');
   const accountDropdown = document.getElementById('accountDropdown');
   if (account && accountDropdown) {
-  let suppressHoverUntil = 0;
-  let suppressTimer = null;
-    // Toggle dropdown on click for all devices
+    let isDropdownOpen = false;
+    
     function openAccount() {
       accountDropdown.style.visibility = 'visible';
       accountDropdown.style.opacity = '1';
       accountDropdown.setAttribute('aria-hidden', 'false');
+      isDropdownOpen = true;
     }
+    
     function closeAccount() {
       accountDropdown.style.visibility = 'hidden';
       accountDropdown.style.opacity = '';
       accountDropdown.setAttribute('aria-hidden', 'true');
-  // remove persistent open state if present
-  accountDropdown.classList.remove('keep-open');
+      accountDropdown.classList.remove('keep-open');
+      isDropdownOpen = false;
     }
-
-    // Only use click/tap toggling and outside-click closing on touch devices.
-    const isTouchDevice = matchMedia('(hover: none)').matches;
-  if (isTouchDevice) {
-      account.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = accountDropdown.style.visibility === 'visible';
-        if (isOpen) closeAccount(); else openAccount();
-      });
-
-      // Close when clicking outside (respect keep-open state)
-      document.addEventListener('click', (e) => {
-        const keep = accountDropdown.classList.contains('keep-open');
-        if (!account.contains(e.target) && !keep) closeAccount();
-      });
-
-      // Close on Escape for touch flows
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeAccount();
-      });
-    } else {
-      // Desktop: hover shows dropdown via CSS; still allow Escape to close if desired
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeAccount();
-      });
-
-      // Prevent immediate hover reopen after Continue by forcing hidden while suppressed
-      account.addEventListener('mouseenter', () => {
-        if (Date.now() < suppressHoverUntil) {
-          // enforce closed state with inline styles while suppressed
-          accountDropdown.style.visibility = 'hidden';
-          accountDropdown.style.opacity = '';
-        }
-      });
-    }
-
-    // Wire Continue button in dropdown and keep-open behavior when input focused
-    const continueBtn = document.getElementById('continueSignin');
+    
+    // Toggle dropdown on click for all devices
+    account.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (isDropdownOpen) {
+        closeAccount();
+      } else {
+        openAccount();
+      }
+    });
+    
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!account.contains(e.target) && !accountDropdown.contains(e.target)) {
+        closeAccount();
+      }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isDropdownOpen) {
+        closeAccount();
+      }
+    });
+    
+    // Handle input focus and blur
     const signinInput = document.getElementById('signin-identifier');
     if (signinInput) {
-      signinInput.addEventListener('focus', () => { accountDropdown.classList.add('keep-open'); openAccount(); });
-      signinInput.addEventListener('blur', () => { accountDropdown.classList.remove('keep-open'); });
+      signinInput.addEventListener('focus', () => {
+        accountDropdown.classList.add('keep-open');
+        openAccount();
+      });
+      
+      signinInput.addEventListener('blur', () => {
+        // Small delay to allow button clicks
+        setTimeout(() => {
+          if (!accountDropdown.contains(document.activeElement)) {
+            accountDropdown.classList.remove('keep-open');
+          }
+        }, 100);
+      });
     }
+    
+    // Handle Continue button
+    const continueBtn = document.getElementById('continueSignin');
     if (continueBtn && signinInput) {
       continueBtn.addEventListener('click', () => {
         const val = signinInput.value.trim();
         if (!val) {
-          signinInput.style.borderColor = '#e53935';
+          signinInput.classList.add('error');
           signinInput.focus();
           return;
         }
-        // blur input to remove focus and any keep-open races
-        try { signinInput.blur(); } catch (e) { /* ignore */ }
-        // Simple next-step: show confirmation (replace with real auth flow later)
+        
+        // Show confirmation
         alert(`Continue with: ${val}`);
-        // ensure persistent state removed and close
-        accountDropdown.classList.remove('keep-open');
-        // Temporarily suppress hover-based reopening using a time window
-        suppressHoverUntil = Date.now() + 1500;
-        if (suppressTimer) clearTimeout(suppressTimer);
-        // enforce hidden state immediately (inline style overrides CSS hover)
-        accountDropdown.style.visibility = 'hidden';
-        accountDropdown.style.opacity = '';
-        suppressTimer = setTimeout(() => {
-          suppressHoverUntil = 0;
-          // clear inline styles so CSS hover works again
-          accountDropdown.style.visibility = '';
-          accountDropdown.style.opacity = '';
-          suppressTimer = null;
-        }, 1500);
+        
+        // Clear input and close dropdown
+        signinInput.value = '';
+        signinInput.classList.remove('error');
         closeAccount();
       });
     }
@@ -248,9 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const productContainer = document.getElementById('product-container');
   if (productContainer) {
     const products = [
-      { id: '1', name: 'Amazon Echo', price: 99.99, image: 'images/products/boAt.jpg' },
-      { id: '2', name: 'Kindle Paperwhite', price: 129.99, image: 'images/products/ipad.jpg' },
-      { id: '3', name: 'Fire TV Stick', price: 39.99, image: 'images/products/Redmi F Series firetv.jpg' },
+        { id: '1', name: 'Amazon Echo', price: 99.99, image: 'images/boAt.jpg' },
+  { id: '2', name: 'Kindle Paperwhite', price: 129.99, image: 'images/ipad.jpg' },
+  { id: '3', name: 'Fire TV Stick', price: 39.99, image: 'images/Redmi F Series firetv.jpg' },
     ];
     productContainer.innerHTML = '';
     products.forEach(product => {

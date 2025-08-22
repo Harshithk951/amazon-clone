@@ -376,9 +376,12 @@ body.dark-mode {
   transform: translateY(8px);
   transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
   z-index: 1100;
+  pointer-events: none;
 }
 
-.nav-account:hover .account-dropdown{ opacity: 1; visibility: visible; transform: translateY(0); }
+.account-dropdown[aria-hidden="false"] {
+  pointer-events: auto;
+}
 
 /* Keep dropdown visible when JS toggles a persistent state (e.g. input focused) */
 .account-dropdown.keep-open {
@@ -388,19 +391,59 @@ body.dark-mode {
   pointer-events: auto;
 }
 
-/* When we need to force-close the account panel after an action, temporarily suppress hover re-opening */
-.nav-account.no-hover:hover .account-dropdown {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translateY(8px) !important;
-  pointer-events: none !important;
+.account-signin{ 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  padding: 8px 8px 12px; 
+  border-bottom: 1px solid #eee; 
 }
 
-.account-signin{ display:flex; align-items:center; gap:12px; padding:8px 8px 12px; border-bottom:1px solid #eee; }
-.btn-signin{ background:#ffd814; color:#111; padding:8px 14px; border-radius:8px; text-decoration:none; font-weight:700; display:inline-block; }
-.btn-signin:hover{ background:#f7ca00; }
+.btn-signin{ 
+  background: #ffd814; 
+  color: #111; 
+  padding: 8px 14px; 
+  border-radius: 8px; 
+  text-decoration: none; 
+  font-weight: 700; 
+  display: inline-block; 
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-signin:hover{ 
+  background: #f7ca00; 
+}
+
+.btn-signin:focus{ 
+  outline: 2px solid #007185; 
+  outline-offset: 2px; 
+}
 .new-customer{ font-size:12px; }
 .new-customer a{ color:#007185; text-decoration:none; }
+
+/* Input field styling */
+#signin-identifier {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+#signin-identifier:focus {
+  outline: none;
+  border-color: #007185;
+  box-shadow: 0 0 0 3px rgba(0, 113, 133, 0.1);
+}
+
+#signin-identifier.error {
+  border-color: #e53935;
+}
 
 .account-panels{ display:flex; gap:20px; padding-top:12px; }
 .account-panel{ flex:1; display:flex; flex-direction:column; gap:8px; }
@@ -408,15 +451,38 @@ body.dark-mode {
 .account-panel a{ color:#111; text-decoration:none; font-size:13px; }
 .account-panel a:hover{ color:#007185; text-decoration:underline; }
 
-/* Mobile-friendly: open by tap */
+/* Mobile-friendly: ensure dropdown works on all devices */
 @media (hover:none) and (pointer:coarse){
-  .nav-account:hover .account-dropdown{ opacity:0; visibility:hidden; transform: translateY(8px); }
+  .nav-account:hover .account-dropdown{ 
+    opacity: 0; 
+    visibility: hidden; 
+    transform: translateY(8px); 
+  }
 }
 
 @media (max-width: 700px){
-  .account-dropdown{ right: 50%; transform: translate(50%, 8px); width: 92vw; }
-  .nav-account:hover .account-dropdown{ transform: translate(50%, 0); }
-  .account-panels{ flex-direction: column; }
+  .account-dropdown{ 
+    right: 50%; 
+    transform: translate(50%, 8px); 
+    width: 92vw; 
+    max-width: 400px;
+  }
+  
+  .nav-account:hover .account-dropdown{ 
+    transform: translate(50%, 0); 
+  }
+  
+  .account-panels{ 
+    flex-direction: column; 
+  }
+  
+  .account-signin {
+    padding: 12px 8px 16px;
+  }
+  
+  #signin-identifier {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
 }
 
 .cart-icon {
