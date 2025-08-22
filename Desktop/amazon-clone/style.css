@@ -383,6 +383,21 @@ body.dark-mode {
   pointer-events: auto;
 }
 
+/* Ensure proper focus management */
+.account-dropdown:focus-within {
+  outline: none;
+}
+
+/* Smooth transitions for better UX */
+.account-dropdown {
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+/* Ensure dropdown is above other elements */
+.account-dropdown {
+  z-index: 1100;
+}
+
 /* Keep dropdown visible when JS toggles a persistent state (e.g. input focused) */
 .account-dropdown.keep-open {
   opacity: 1 !important;

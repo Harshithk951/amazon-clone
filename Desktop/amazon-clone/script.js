@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDropdownOpen = false;
     
     function openAccount() {
+      console.log('Opening account dropdown');
       accountDropdown.style.visibility = 'visible';
       accountDropdown.style.opacity = '1';
       accountDropdown.setAttribute('aria-hidden', 'false');
@@ -120,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function closeAccount() {
+      console.log('Closing account dropdown');
       accountDropdown.style.visibility = 'hidden';
       accountDropdown.style.opacity = '';
       accountDropdown.setAttribute('aria-hidden', 'true');
@@ -131,6 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
     account.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
+      
+      console.log('Account clicked, current state:', isDropdownOpen);
       
       if (isDropdownOpen) {
         closeAccount();
@@ -157,14 +161,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const signinInput = document.getElementById('signin-identifier');
     if (signinInput) {
       signinInput.addEventListener('focus', () => {
+        console.log('Input focused, adding keep-open class');
         accountDropdown.classList.add('keep-open');
         openAccount();
       });
       
       signinInput.addEventListener('blur', () => {
+        console.log('Input blurred, checking if should remove keep-open');
         // Small delay to allow button clicks
         setTimeout(() => {
           if (!accountDropdown.contains(document.activeElement)) {
+            console.log('Removing keep-open class');
             accountDropdown.classList.remove('keep-open');
           }
         }, 100);
@@ -175,13 +182,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const continueBtn = document.getElementById('continueSignin');
     if (continueBtn && signinInput) {
       continueBtn.addEventListener('click', () => {
+        console.log('Continue button clicked');
         const val = signinInput.value.trim();
         if (!val) {
+          console.log('No value entered, showing error');
           signinInput.classList.add('error');
           signinInput.focus();
           return;
         }
         
+        console.log('Value entered:', val);
         // Show confirmation
         alert(`Continue with: ${val}`);
         
