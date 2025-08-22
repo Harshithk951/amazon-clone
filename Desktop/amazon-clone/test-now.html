@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TEST NOW - Amazon Clone</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 50px; 
+            background: #232f3e; 
+            color: white; 
+            text-align: center; 
+        }
+        .test { 
+            background: #37475a; 
+            padding: 30px; 
+            border-radius: 10px; 
+            max-width: 500px; 
+            margin: 0 auto; 
+        }
+        h1 { color: #ffd814; }
+        .success { background: #28a745; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .timer { background: #17a2b8; padding: 15px; border-radius: 5px; margin: 20px 0; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="test">
+        <h1>⏰ TEST NOW</h1>
+        
+        <div class="success">
+            ✅ This test page should work immediately!
+        </div>
+        
+        <div class="timer">
+            <strong>Deployment Status:</strong><br>
+            • Code pushed: ✅<br>
+            • GitHub Pages rebuilding: 🔄<br>
+            • Wait time: 5-10 minutes<br>
+            • Current time: <span id="current-time"></span>
+        </div>
+        
+        <p><strong>Test this page:</strong></p>
+        <p>Visit: <code>https://harshithk951.github.io/amazon-clone/test-now.html</code></p>
+        
+        <p>If you see this page, GitHub Pages is working!</p>
+    </div>
+
+    <script>
+        // Show current time
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleTimeString();
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
