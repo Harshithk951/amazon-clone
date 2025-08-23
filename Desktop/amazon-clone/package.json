@@ -2,10 +2,10 @@
   "name": "amazon-clone",
   "version": "1.0.0",
   "description": "Amazon clone static website",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
-    "build": "echo 'Static site - no build required'",
-    "start": "echo 'Static site - open index.html in browser'"
+    "start": "node index.js",
+    "dev": "node index.js"
   },
   "keywords": ["amazon", "clone", "static", "website"],
   "author": "Your Name",
