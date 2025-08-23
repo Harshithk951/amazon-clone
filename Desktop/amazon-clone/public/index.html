@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon.in: Online Shopping India - Shop Online for Mobiles, Books, Watches, Shoes and More</title>
+  <link rel="icon" href="https://www.amazon.in/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <!-- Main Navigation Bar -->
+    <div class="navbar">
+      <div class="logo-bg">
+        <a href="/" class="logo-link">
+          <img src="images/amazon-logo.jpg" alt="Amazon.in" class="amazon-logo">
+        </a>
+      </div>
+      
+      <div class="delivery-amazon">
+        <i class="fa-solid fa-location-dot"></i>
+        <div class="delivery-text">
+          <span class="delivery-label" id="deliveryLabel">Detecting your location...</span>
+          <a href="#" class="update-location">Update location</a>
+        </div>
+
+      </div>
+
+      <form class="navbar-search">
+        <div class="search-category-wrap">
+          <select class="search-category" id="categoryDropdown">
+            <option value="all">All </option>
+            <option value="alexa-skills" style="font-style: normal;">Alexa Skills</option>
+            <option value="amazon-devices" style="font-style: normal;">Amazon Devices</option>
+            <option value="amazon-fashion" style="font-style: normal;">Amazon Fashion</option>
+            <option value="amazon-fresh" style="font-style: normal;">Amazon Fresh</option>
+            <option value="amazon-pharmacy" style="font-style: normal;">Amazon Pharmacy</option>
+            <option value="appliances" style="font-style: normal;">Appliances</option>
+            <option value="apps-games" style="font-style: normal;">Apps & Games</option>
+            <option value="audible" style="font-style: normal;">Audible Audiobooks</option>
+            <option value="baby" style="font-style: normal;">Baby</option>
+            <option value="beauty" style="font-style: normal;">Beauty</option>
+            <option value="books" style="font-style: normal;">Books</option>
+            <option value="car-motorbike" style="font-style: normal;">Car & Motorbike</option>
+            <option value="clothing-accessories" style="font-style: normal;">Clothing & Accessories</option>
+            <option value="collectibles" style="font-style: normal;">Collectibles</option>
+            <option value="computers-accessories" style="font-style: normal;">Computers & Accessories</option>
+            <option value="deals" style="font-style: normal;">Deals</option>
+            <option value="electronics" style="font-style: normal;">Electronics</option>
+            <option value="fashion" style="font-style: normal;">Fashion</option>
+            <option value="furniture" style="font-style: normal;">Furniture</option>
+            <option value="garden-outdoors" style="font-style: normal;">Garden & Outdoors</option>
+            <option value="gift-cards" style="font-style: normal;">Gift Cards</option>
+            <option value="grocery-gourmet" style="font-style: normal;">Grocery & Gourmet Foods</option>
+            <option value="health-personal-care" style="font-style: normal;">Health & Personal Care</option>
+            <option value="home-kitchen" style="font-style: normal;">Home & Kitchen</option>
+            <option value="industrial-scientific" style="font-style: normal;">Industrial & Scientific</option>
+            <option value="jewellery" style="font-style: normal;">Jewellery</option>
+            <option value="kindle-store" style="font-style: normal;">Kindle Store</option>
+            <option value="luggage-bags" style="font-style: normal;">Luggage & Bags</option>
+            <option value="luxury-beauty" style="font-style: normal;">Luxury Beauty</option>
+            <option value="movies-tv" style="font-style: normal;">Movies & TV Shows</option>
+            <option value="mp3-music" style="font-style: normal;">MP3 Music</option>
+            <option value="music" style="font-style: normal;">Music</option>
+            <option value="musical-instruments" style="font-style: normal;">Musical Instruments</option>
+            <option value="office-products" style="font-style: normal;">Office Products</option>
+            <option value="pet-supplies" style="font-style: normal;">Pet Supplies</option>
+            <option value="prime-video" style="font-style: normal;">Prime Video</option>
+            <option value="shoes-handbags" style="font-style: normal;">Shoes & Handbags</option>
+            <option value="software" style="font-style: normal;">Software</option>
+            <option value="sports-fitness" style="font-style: normal;">Sports, Fitness & Outdoors</option>
+            <option value="subscribe-save" style="font-style: normal;">Subscribe & Save</option>
+            <option value="tools-home-improvement" style="font-style: normal;">Tools & Home Improvement</option>
+            <option value="toys-games" style="font-style: normal;">Toys & Games</option>
+            <option value="under-500" style="font-style: normal;">Under ₹500</option>
+            <option value="video-games" style="font-style: normal;">Video Games</option>
+            <option value="watches" style="font-style: normal;">Watches</option>
+          </select>
+          <span class="search-category-arrow">
+            <i class="fa fa-chevron-down"></i>
+          </span>
+        </div>
+        <input type="text" placeholder="Search Amazon.in" class="search-input">
+        <button type="submit" class="search-button" aria-label="Search">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+      
+      <div class="nav-links">
+        <div class="language-selector">
+          <img src="https://flagcdn.com/in.svg" alt="Indian Flag" class="flag" style="width: 22px; height: 16px; vertical-align: middle; margin-right: 4px; border-radius: 2px; box-shadow: 0 0 1px #888;" />
+          <span>EN</span>
+          <i class="fa fa-chevron-down"></i>
+          <div class="language-dropdown">
+            <ul>
+              <li><label><input type="radio" name="lang" checked> English - EN</label></li>
+              <li><label><input type="radio" name="lang"> हिन्दी - HI</label></li>
+              <li><label><input type="radio" name="lang"> தமிழ் - TA</label></li>
+              <li><label><input type="radio" name="lang"> తెలుగు - TE</label></li>
+              <li><label><input type="radio" name="lang"> ಕನ್ನಡ - KN</label></li>
+              <li><label><input type="radio" name="lang"> മലയാളം - ML</label></li>
+              <li><label><input type="radio" name="lang"> বাংলা - BN</label></li>
+              <li><label><input type="radio" name="lang"> मराठी - MR</label></li>
+            </ul>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div class="language-learn-more"><a href="#">Learn more</a></div>
+            </div>
+            <hr class="language-divider" />
+            <div class="language-shop-info">You are shopping on Amazon.in</div>
+            <div class="language-learn-more" style="margin-top:2px;"><a href="#">Change country/region</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-account" id="loginBtn">
+          <div class="nav-account-line1">Hello, sign in</div>
+          <div class="nav-account-line2">Account & Lists <i class="fa fa-chevron-down"></i></div>
+          <!-- Account Hover/Click Dropdown -->
+          <div class="account-dropdown" id="accountDropdown" aria-hidden="true" role="menu">
+            <div class="account-signin-form" style="padding:12px;min-width:260px;">
+              <h4 style="margin:0 0 8px 0;font-size:16px;">Sign in or create account</h4>
+              <form id="signinForm">
+                <label for="signin-identifier" style="display:none;">Mobile number or email</label>
+                <input id="signin-identifier" type="text" placeholder="Mobile number or email" style="width:100%;padding:10px;border:1px solid #e6e6e6;border-radius:6px;margin-bottom:10px;box-sizing:border-box;font-size:14px;" />
+                <button id="continueSignin" type="button" class="btn-signin" style="display:block;width:100%;">Continue</button>
+              </form>
+              <p style="font-size:12px;margin-top:8px;color:#666;line-height:1.3;">By continuing, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.</p>
+              <p style="margin-top:8px;font-size:13px;"><strong>Buying for work?</strong> <a href="#">Create a free business account</a></p>
+            </div>
+            <hr style="margin:8px 0;border:none;border-top:1px solid #eee;" />
+            <div class="account-panels" style="padding:8px;display:flex;gap:12px;">
+              <div class="account-panel">
+                <h4>Your Lists</h4>
+                <a href="#" role="menuitem">Create a Wish List</a>
+                <a href="#" role="menuitem">Wish from Any Website</a>
+                <a href="#" role="menuitem">Baby Wishlist</a>
+                <a href="#" role="menuitem">Discover Your Style</a>
+                <a href="#" role="menuitem">Explore Showroom</a>
+              </div>
+              <div class="account-panel">
+                <h4>Your Account</h4>
+                <a href="#" role="menuitem">Your Account</a>
+                <a href="#" role="menuitem">Your Orders</a>
+                <a href="#" role="menuitem">Your Wish List</a>
+                <a href="#" role="menuitem">Your Recommendations</a>
+                <a href="#" role="menuitem">Your Prime Membership</a>
+                <a href="#" role="menuitem">Your Prime Video</a>
+                <a href="#" role="menuitem">Your Subscribe & Save Items</a>
+                <a href="#" role="menuitem">Memberships & Subscriptions</a>
+                <a href="#" role="menuitem">Your Seller Account</a>
+                <a href="#" role="menuitem">Manage Your Content and Devices</a>
+                <a href="#" role="menuitem">Register for a free Business Account</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-orders">
+          <div class="nav-orders-line1">Returns</div>
+          <div class="nav-orders-line2">& Orders</div>
+        </div>
+        <div class="nav-cart" id="cartBtn">
+          <div class="cart-icon-wrapper">
+            <i class="fa fa-shopping-cart cart-icon"></i>
+            <span class="cart-count">0</span>
+          </div>
+          <span class="cart-text">Cart</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Secondary Navigation -->
+    <nav class="subnav">
+      <button class="hamburger-menu" aria-label="All"><i class="fa fa-bars"></i> <span>All</span></button>
+      <a href="#" class="subnav-link">Fresh</a>
+      <a href="#" class="subnav-link">MX Player</a>
+      <a href="#" class="subnav-link">Sell</a>
+      <a href="#" class="subnav-link">Bestsellers</a>
+      <a href="#" class="subnav-link">Today's Deals</a>
+      <a href="#" class="subnav-link">Mobiles</a>
+      <div class="subnav-item prime-item">
+        <a href="#" class="subnav-link prime-trigger" id="primeTrigger" aria-haspopup="true" aria-expanded="false">Prime <i class="fa fa-caret-down prime-caret" aria-hidden="true"></i></a>
+        <div class="prime-popover" id="primePopover" role="dialog" aria-hidden="true" aria-label="Prime promotion">
+          <div class="prime-popover-inner">
+            <div class="prime-text">
+              <h3>Shopping plans starting at ₹399/year</h3>
+              <p>Get FREE same/1-day delivery, Prime offers & more</p>
+            </div>
+            <div class="prime-image-container">
+              <img src="images/Prime.jpg" alt="Shopping plans starting at ₹399/year" class="prime-popover-image">
+            </div>
+            <a href="#" class="prime-cta">Join Prime Now</a>
+            <div class="prime-logo">amazon prime</div>
+          </div>
+          <span class="prime-popover-arrow" aria-hidden="true"></span>
+        </div>
+      </div>
+      <a href="#" class="subnav-link">Customer Service</a>
+      <a href="#" class="subnav-link">Electronics</a>
+      <a href="#" class="subnav-link">Fashion</a>
+      <a href="#" class="subnav-link">New Releases</a>
+      <a href="#" class="subnav-link">Home & Kitchen</a>
+      <a href="#" class="subnav-link">Amazon Pay</a>
+      <a href="#" class="subnav-link">Computers</a>
+      <a href="#" class="subnav-link">Books</a>
+      <a href="#" class="subnav-link">Beauty & Personal Care</a>
+      <a href="#" class="subnav-link">Home Improvement</a>
+    </nav>
+  </header>
+
+  <!-- Left Side Drawer: All Menu -->
+  <div class="drawer-overlay" id="allMenuOverlay" aria-hidden="true"></div>
+  <aside class="side-drawer" id="allMenu" aria-label="All categories menu" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <i class="fa-regular fa-circle-user"></i>
+        <span>Hello, sign in</span>
+      </div>
+      <button class="drawer-close" aria-label="Close menu"><i class="fa fa-xmark"></i></button>
+    </div>
+    <div class="drawer-content">
+      <div class="drawer-section">
+        <h4>Trending</h4>
+        <a href="#" class="drawer-item">Bestsellers</a>
+        <a href="#" class="drawer-item">New Releases</a>
+        <a href="#" class="drawer-item">Movers and Shakers</a>
+      </div>
+
+      <div class="drawer-section">
+        <h4>Digital Content and Devices</h4>
+        <a href="#" class="drawer-item">Echo & Alexa <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">Fire TV <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">Kindle E-Readers & eBooks <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">Audible Audiobooks <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">Amazon Prime Video <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">Amazon Prime Music <i class="fa fa-chevron-right"></i></a>
+      </div>
+
+      <div class="drawer-section">
+        <h4>Shop by Category</h4>
+        <a href="#" class="drawer-item">Mobiles, Computers <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">TV, Appliances, Electronics <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">Men's Fashion <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">Women's Fashion <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">See all <i class="fa fa-chevron-right"></i></a>
+      </div>
+
+      <div class="drawer-section">
+        <h4>Programs & Features</h4>
+        <a href="#" class="drawer-item">Amazon Pay</a>
+        <a href="#" class="drawer-item">Gift Cards & Mobile Recharges <i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="drawer-item">Amazon Launchpad</a>
+        <a href="#" class="drawer-item">Amazon Business</a>
+        <a href="#" class="drawer-item">Handloom and Handicrafts</a>
+        <a href="#" class="drawer-item">Amazon Saheli</a>
+        <a href="#" class="drawer-item">Amazon Custom</a>
+        <a href="#" class="drawer-item">Flight Tickets</a>
+        <a href="#" class="drawer-item">Buy more, Save more</a>
+        <a href="#" class="drawer-item">Clearance store</a>
+        <a href="#" class="drawer-item">International Brands</a>
+        <a href="#" class="drawer-item">see less <i class="fa fa-chevron-up"></i></a>
+      </div>
+
+      <div class="drawer-section">
+        <h4>Help & Settings</h4>
+        <a href="#" class="drawer-item">Your Account</a>
+        <a href="#" class="drawer-item">Customer Service</a>
+        <a href="#" class="drawer-item">Sign in</a>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-banner">
+      <div class="hero-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide active">
+            <img src="images/banner1.jpg" alt="Amazon Fashion Banner" class="hero-image">
+            <div class="carousel-content">
+              
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/banner2.jpg" alt="Electronics Deals" class="hero-image">
+            <div class="carousel-content">
+            
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/banner3.jpg" alt="Home & Kitchen" class="hero-image">
+            <div class="carousel-content">
+             
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/banner4.jpg" alt="Electronics & Gadgets" class="hero-image">
+            <div class="carousel-content">
+              
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/banner5.jpg" alt="New Arrivals" class="hero-image">
+            <div class="carousel-content">
+              
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn prev-btn" aria-label="Previous slide">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next-btn" aria-label="Next slide">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+        <div class="carousel-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+          <span class="dot" data-slide="3"></span>
+          <span class="dot" data-slide="4"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid Section -->
+    <section class="product-grid">
+       <!-- Appliances for your home -->
+      <div class="product-card">
+        <h2>Appliances for your home | Up to 55% off</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/Air Conditioners.jpg" alt="Air conditioners">
+            <span>Air conditioners</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Refrigerators.jpg" alt="Refrigerators">
+            <span>Refrigerators</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Microwaves.jpg" alt="Microwaves">
+            <span>Microwaves</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Washing machines.jpg" alt="Washing machines">
+            <span>Washing machines</span>
+          </div>
+        </div>
+        <a href="#" class="product-link">See more</a>
+      </div>
+
+      <!-- Revamp your home in style -->
+      <div class="product-card">
+        <h2>Revamp your home in style</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/bedding.jpg" alt="Cushion covers, bedsheets & more">
+            <span>Cushion covers, bedsheets & more</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/decor.jpg" alt="Figurines, vases & more">
+            <span>Figurines, vases & more</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/storage.jpg" alt="Home storage">
+            <span>Home storage</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Lighting solutions.jpg" alt="Lighting solutions">
+            <span>Lighting solutions</span>
+          </div>
+        </div>
+        <a href="#" class="product-link">Explore all</a>
+      </div>
+
+      <!-- Under ₹499 deals -->
+      <div class="product-card">
+        <h2>Under ₹499 | Deals on home improvement essentials</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/cleaning.jpg" alt="Cleaning supplies">
+            <span>Cleaning supplies</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Bathroom accessories.jpg" alt="Bathroom accessories">
+            <span>Bathroom accessories</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Home tools.jpg" alt="Home tools">
+            <span>Home tools</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Wallpapers.jpg" alt="Wallpapers">
+            <span>Wallpapers</span>
+          </div>
+        </div>
+        <a href="#" class="product-link">Explore all</a>
+      </div>
+
+      <!-- Baby care & toys -->
+      <div class="product-card">
+        <h2>Min. 40% off | Baby care & toys | Amazon brands</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/Daipers & Wipes.jpg" alt="Diapers & wipes">
+            <span>Diapers & wipes</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/High chairs, cradles & more.jpg" alt="High chairs, cradles & more">
+            <span>High chairs, cradles & more</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Soft toys.jpg" alt="Soft toys">
+            <span>Soft toys</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Indoor & outdoor games.jpg" alt="Indoor & outdoor games">
+            <span>Indoor & outdoor games</span>
+          </div>
+        </div>
+        <a href="#" class="product-link">See all offers</a>
+      </div>
+
+      <!-- Headphones -->
+      <div class="product-card">
+        <h2>Starting ₹149 | Headphones</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/boAt.jpg" alt="boAt">
+            <span>Starting ₹249 | boAt</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/BOULT.jpg" alt="BOULT">
+            <span>Starting ₹349 | BOULT</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Noise.jpg" alt="Noise">
+            <span>Starting ₹649 | Noise</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Zebronics.jpg" alt="Zebronics">
+            <span>Starting ₹649 | Zebronics</span>
+          </div>
+        </div>
+        <a href="#" class="product-link">See all offers</a>
+      </div>
+
+      <!-- TV screens -->
+      <div class="product-card">
+        <h2>Get your desired TV screen size | Starting ₹6,999</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/Redmi F Series firetv.jpg" alt="Redmi F Series firetv">
+            <span>Redmi F Series firetv</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/4K TVs.jpg" alt="4K TVs">
+            <span>4K TVs</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Ultra Premium TVs.jpg" alt="Ultra Premium TVs">
+            <span>Ultra Premium TVs</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/Big Screens | Free installation.jpg" alt="Big Screens">
+            <span>Big Screens</span>
+          </div>
+        </div>
+        <div class="tv-info">
+          <span>Budget TVs</span>
+          <span>4K TVs</span>
+          <span>EMI from ₹583/month</span>
+        </div>
+        <a href="#" class="product-link">See all </a>
+      </div>
+
+      <!-- Electronics -->
+      <div class="product-card">
+        <h2>Electronics | Up to 40% off</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/phone.jpg" alt="Smartphones">
+            <span>Smartphones</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/laptop.jpg" alt="Laptops">
+            <span>Laptops</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/ipad.jpg" alt="Tablets">
+            <span>Tablets</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/headset.jpg" alt="Headphones">
+            <span>Headphones</span>
+          </div>
+        </div>
+        <a href="#" class="product-link">Explore all offers</a>
+      </div>
+
+      <!-- Beauty & Personal Care -->
+      <div class="product-card">
+        <h2>Beauty & Personal Care | Up to 60% off</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/lipstick.jpg" alt="Makeup">
+            <span>Makeup</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/fragrance.jpg" alt="Fragrances">
+            <span>Fragrances</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/keyboard.jpg" alt="Computer accessories">
+            <span>Computer accessories</span>
+          </div>
+          <div class="product-image-item">
+            <img src="images/decor.jpg" alt="Beauty accessories">
+            <span>Beauty accessories</span>
+          </div>
+        </div>
+        <a href="#" class="product-link">Explore all</a>
+      </div>
+
+      <!-- Bikes -->
+      <div class="product-card">
+        <h2>Starting ₹70,348 | Set off on your next great ride</h2>
+        <div class="product-images">
+          <div class="product-image-item">
+            <img src="images/Bike1.jpg" alt="Bike1">
+          </div>
+          <div class="product-image-item">
+            <img src="images/Bike2.jpg" alt="Bike2">
+          </div>
+          <div class="product-image-item">
+            <img src="images/Bike3.jpg" alt="Bike3">
+          </div>
+          <div class="product-image-item">
+            <img src="images/Bike4.jpg" alt="Bike4">
+          </div>
+          <div class="product-image-item">
+            <img src="images/Bike5.jpg" alt="Bike5">
+          </div>
+          <div class="product-image-item">
+            <img src="images/Bike6.jpg" alt="Bike6">
+          </div>
+          <div class="product-image-item">
+            <img src="images/Bike7.jpg" alt="Bike7">
+          </div>
+        </div>
+        <a href="#" class="product-link">See all offers</a>
+      </div>
+
+
+    </section>
+  </main>
+
+  <footer class="amazon-footer">
+    <div class="footer-links">
+      <div class="footer-section">
+        <p><strong>Amazon Music</strong><br>Stream millions of songs</p>
+        <p><strong>Amazon Ads</strong><br>Reach customers wherever they spend their time</p>
+        <p><strong>6pm</strong><br>Score deals on fashion brands</p>
+        <p><strong>AbeBooks</strong><br>Books, art & collectibles</p>
+        <p><strong>ACX</strong><br>Audiobook Publishing Made Easy</p>
+        <p><strong>Sell on Amazon</strong><br>Start a Selling Account</p>
+        <p><strong>Veeqo</strong><br>Shipping Software Inventory Management</p>
+      </div>
+      <div class="footer-section">
+        <p><strong>Amazon Business</strong><br>Everything For Your Business</p>
+        <p><strong>AmazonGlobal</strong><br>Ship Orders Internationally</p>
+        <p><strong>Amazon Web Services</strong><br>Scalable Cloud Computing Services</p>
+        <p><strong>Audible</strong><br>Listen to Books & Original Audio Performances</p>
+        <p><strong>Box Office Mojo</strong><br>Find Movie Box Office Data</p>
+        <p><strong>Goodreads</strong><br>Book reviews & recommendations</p>
+        <p><strong>IMDb</strong><br>Movies, TV & Celebrities</p>
+      </div>
+      <div class="footer-section">
+        <p><strong>IMDbPro</strong><br>Get Info Entertainment Professionals Need</p>
+        <p><strong>Kindle Direct Publishing</strong><br>Indie Digital & Print Publishing Made Easy</p>
+        <p><strong>Prime Video Direct</strong><br>Video Distribution Made Easy</p>
+        <p><strong>Shopbop</strong><br>Designer Fashion Brands</p>
+        <p><strong>Woot!</strong><br>Deals and Shenanigans</p>
+        <p><strong>Zappos</strong><br>Shoes & Clothing</p>
+        <p><strong>Ring</strong><br>Smart Home Security Systems</p>
+      </div>
+      <div class="footer-section">
+        <p><strong>eero WiFi</strong><br>Stream 4K Video in Every Room</p>
+        <p><strong>Blink</strong><br>Smart Security for Every Home</p>
+        <p><strong>Neighbors App</strong><br>Real-Time Crime & Safety Alerts</p>
+        <p><strong>Amazon Subscription Boxes</strong><br>Top subscription boxes – right to your door</p>
+        <p><strong>PillPack</strong><br>Pharmacy Simplified</p>
+      </div>
+    </div>
+    <hr class="footer-divider" />
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <a href="#">Conditions of Use</a>
+        <span>|</span>
+        <a href="#">Privacy Notice</a>
+        <span>|</span>
+        <a href="#">Consumer Health Data Privacy Disclosure</a>
+        <span>|</span>
+        <a href="#">Your Ads Privacy Choices</a>
+      </div>
+      <div class="footer-copyright">
+        ©️ 1996–2025, Amazon.com, Inc. or its affiliates
+      </div>
+    </div>
+  </footer>
+
+  <!-- Country/Region Modal -->
+  <div id="countryModal" class="country-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;z-index:9999;">
+    <div style="background:#fff;padding:24px 32px;border-radius:8px;min-width:300px;max-width:90vw;box-shadow:0 2px 16px #0002;position:relative;">
+      <h3 style="margin-top:0;">Select your country/region</h3>
+      <select id="countrySelect" style="width:100%;padding:8px 4px;margin-bottom:16px;">
+        <option value="IN">India</option>
+        <option value="US">United States</option>
+        <option value="GB">United Kingdom</option>
+        <option value="CA">Canada</option>
+        <option value="AU">Australia</option>
+        <option value="DE">Germany</option>
+        <option value="FR">France</option>
+        <option value="JP">Japan</option>
+        <option value="BR">Brazil</option>
+        <option value="AE">United Arab Emirates</option>
+        <option value="CN">China</option>
+        <option value="ZA">South Africa</option>
+        <option value="MX">Mexico</option>
+        <option value="IT">Italy</option>
+        <option value="ES">Spain</option>
+        <option value="SG">Singapore</option>
+        <option value="NL">Netherlands</option>
+        <option value="SE">Sweden</option>
+        <option value="CH">Switzerland</option>
+        <option value="TR">Turkey</option>
+      </select>
+      <button id="countrySaveBtn" style="background:#ffd814;border:none;padding:8px 18px;border-radius:4px;font-weight:600;cursor:pointer;">Save</button>
+      <button id="countryCancelBtn" style="background:#eee;border:none;padding:8px 18px;border-radius:4px;margin-left:8px;cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+</body>
+</html>
