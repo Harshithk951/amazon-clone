@@ -500,6 +500,23 @@ body.dark-mode {
   }
 }
 
+/* Responsive: tighten product grid and hero height on smaller screens */
+@media (max-width: 1024px){
+  .hero-carousel { height: 380px; }
+  .product-image-item img { height: 120px; }
+}
+
+@media (max-width: 768px){
+  .hero-carousel { height: 300px; }
+  .product-images { grid-template-columns: repeat(2, 1fr); }
+  .product-image-item img { height: 110px; }
+}
+
+@media (max-width: 480px){
+  .hero-carousel { height: 220px; }
+  .product-image-item img { height: 100px; }
+}
+
 .cart-icon {
   font-size: 20px;
   color: var(--white);
@@ -593,8 +610,12 @@ body.dark-mode {
 }
 
 .language-selector .flag {
-  font-size: 16px;
-  margin: 0 2px;
+  width: 26px;
+  height: 18px;
+  vertical-align: middle;
+  margin: 0 4px;
+  border-radius: 3px;
+  box-shadow: 0 0 1px #888;
 }
 
 .language-selector i {
@@ -787,7 +808,7 @@ body.dark-mode {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  height: 400px;
+  height: 460px;
   overflow: hidden;
 }
 
@@ -795,6 +816,7 @@ body.dark-mode {
   display: flex;
   transition: transform 0.5s ease-in-out;
   height: 100%;
+  will-change: transform;
 }
 
 .carousel-slide {
@@ -804,6 +826,7 @@ body.dark-mode {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  will-change: opacity, transform;
 }
 
 .carousel-slide.active {
@@ -811,12 +834,9 @@ body.dark-mode {
 }
 
 .hero-image {
-  /* Show whole image without cropping (avoid zoomed-in look) */
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
   border-radius: 8px;
 }
@@ -1008,10 +1028,10 @@ body.dark-mode {
 }
 
 .product-images {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin-bottom: 10px;
-  flex-wrap: wrap;
 }
 
 .product-image-item {
@@ -1019,18 +1039,17 @@ body.dark-mode {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 1;
-  min-width: 100px;
 }
 
 .product-image-item img {
   width: 100%;
-  height: 120px;
-  object-fit: cover;
+  height: 130px;
+  object-fit: contain;
   border-radius: 6px;
   margin-bottom: 8px;
-  background: #f8f9fa;
-  border: none !important;
+  background: #fff;
+  padding: 8px;
+  border: 1px solid #f0f0f0 !important;
   outline: none !important;
 }
 

@@ -30,6 +30,27 @@ async function updateDeliveryLocation(showLoading = true) {
 
 // Single DOMContentLoaded initializer
 document.addEventListener('DOMContentLoaded', () => {
+  // Performance: lazy-load most images and prioritize above-the-fold
+  try {
+    const heroImgs = Array.from(document.querySelectorAll('.hero-carousel img'));
+    if (heroImgs.length > 0) {
+      heroImgs.forEach((img, idx) => {
+        img.decoding = 'async';
+        if (idx === 0) {
+          img.loading = 'eager';
+          img.setAttribute('fetchpriority', 'high');
+        } else {
+          img.loading = 'lazy';
+          img.setAttribute('fetchpriority', 'low');
+        }
+      });
+    }
+    document.querySelectorAll('.product-grid img').forEach(img => {
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.setAttribute('fetchpriority', 'low');
+    });
+  } catch (_) {}
   // Initialize delivery label
   updateDeliveryLocation();
   const updateLocationLink = document.querySelector('.update-location');
@@ -68,6 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function stopAutoSlide() { if (autoSlideInterval) { clearInterval(autoSlideInterval); autoSlideInterval = null; } }
   function resetAutoSlide() { stopAutoSlide(); startAutoSlide(); }
+
+  // Pause carousel when tab not visible to save CPU
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoSlide(); else startAutoSlide();
+  });
 
   // Pause on hover
   const hero = document.querySelector('.hero-carousel');
@@ -223,17 +249,70 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- Language / country modal ----------
   const countryChangeLink = Array.from(document.querySelectorAll('.language-learn-more a')).find(a => a.textContent.trim().toLowerCase() === 'change country/region');
   const countryModal = document.getElementById('countryModal');
+  // Helper to update flag icon and persist selection
+  function updateCountryFlag(countryCode) {
+    try {
+      const normalized = String(countryCode || '').toLowerCase();
+      const flagImg = document.querySelector('.language-selector .flag');
+      if (flagImg && normalized) {
+        flagImg.src = `https://flagcdn.com/${normalized}.svg`;
+        flagImg.alt = `${normalized.toUpperCase()} Flag`;
+      }
+      // Persist selection
+      localStorage.setItem('selectedCountryCode', normalized);
+    } catch (_) {}
+  }
+
+  // Load persisted country on startup
+  const persistedCountry = localStorage.getItem('selectedCountryCode');
+  if (persistedCountry) updateCountryFlag(persistedCountry);
+
   if (countryChangeLink && countryModal) {
-    countryChangeLink.addEventListener('click', (e)=>{ e.preventDefault(); countryModal.style.display = 'flex'; });
-    countryModal.querySelector('#countrySaveBtn').onclick = () => { countryModal.style.display = 'none'; };
-    countryModal.querySelector('#countryCancelBtn').onclick = () => { countryModal.style.display = 'none'; };
-    countryModal.addEventListener('click', (e)=>{ if (e.target === countryModal) countryModal.style.display = 'none'; });
+    let scrollLockY = 0;
+    function openCountryModal(e){
+      if (e) e.preventDefault();
+      countryModal.style.display = 'flex';
+      // Lock scroll without jumping
+      scrollLockY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollLockY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+    }
+    function closeCountryModal(){
+      countryModal.style.display = 'none';
+      // Restore scroll
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollLockY);
+    }
+    countryChangeLink.addEventListener('click', openCountryModal);
+    const saveBtn = countryModal.querySelector('#countrySaveBtn');
+    const cancelBtn = countryModal.querySelector('#countryCancelBtn');
+    const selectEl = countryModal.querySelector('#countrySelect');
+    if (saveBtn && selectEl) {
+      saveBtn.onclick = () => {
+        const code = selectEl.value;
+        updateCountryFlag(code);
+        closeCountryModal();
+      };
+    }
+    if (cancelBtn) cancelBtn.onclick = () => { closeCountryModal(); };
+    countryModal.addEventListener('click', (e)=>{ if (e.target === countryModal) closeCountryModal(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && countryModal.style.display === 'flex') closeCountryModal(); });
   }
 
   // ---------- Dynamic dropdown width adjustment (category) ----------
   const searchCategoryWrap = document.querySelector('.search-category-wrap');
+  let lastCategoryWidth = null;
   function adjustDropdownWidth() {
     if (!searchCategory || !searchCategoryWrap) return;
+    // Avoid width recalculation while user is typing to prevent cursor flicker
+    if (document.activeElement === searchInput) return;
     const selectedOption = searchCategory.options[searchCategory.selectedIndex];
     const text = selectedOption ? selectedOption.text : '';
     const tempSpan = document.createElement('span');
@@ -242,10 +321,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const textWidth = tempSpan.offsetWidth;
     document.body.removeChild(tempSpan);
     const minWidth = 70; const arrowPadding = 40; const newWidth = Math.max(minWidth, textWidth + arrowPadding);
-    searchCategoryWrap.style.width = newWidth + 'px';
-    searchCategory.style.width = newWidth + 'px';
+    // Only apply when width actually changes to avoid caret reflow
+    if (lastCategoryWidth === null || Math.abs(newWidth - lastCategoryWidth) > 1) {
+      searchCategoryWrap.style.width = newWidth + 'px';
+      searchCategory.style.width = newWidth + 'px';
+      lastCategoryWidth = newWidth;
+    }
   }
-  if (searchCategory) { adjustDropdownWidth(); searchCategory.addEventListener('change', adjustDropdownWidth); window.addEventListener('resize', adjustDropdownWidth); }
+  if (searchCategory) {
+    adjustDropdownWidth();
+    searchCategory.addEventListener('change', adjustDropdownWidth);
+    // Throttle resize handler to avoid layout jank
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (document.activeElement === searchInput) return; // do nothing while typing
+      if (resizeTimer) cancelAnimationFrame(resizeTimer);
+      resizeTimer = requestAnimationFrame(adjustDropdownWidth);
+    });
+  }
 
   // ---------- Product cards (static) ----------
   const productContainer = document.getElementById('product-container');
