@@ -1,6 +1,0 @@
-# GitHub Pages configuration
-# This file ensures GitHub Pages deploys from the root directory
-# and doesn't interfere with the deployment process
-
-# No specific configuration needed - GitHub Pages will use default settings
-# and deploy from the root directory of the main branch

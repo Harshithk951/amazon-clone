@@ -1,0 +1,5 @@
+<svg width="100" height="32" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="32" fill="#046be9"/>
+  <text x="50" y="18" font-family="Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="white" text-transform="lowercase">amazon prime</text>
+  <path d="M 25 24 Q 50 20 75 24" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
