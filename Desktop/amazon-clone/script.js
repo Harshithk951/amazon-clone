@@ -879,6 +879,75 @@ const PRODUCTS_DATABASE = [
     inStock: true,
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹12,300/month'
+  },
+  {
+    id: 'bike006',
+    name: 'Sport Motorcycle 400cc',
+    category: 'automotive',
+    price: 189999,
+    originalPrice: 215000,
+    discount: 12,
+    image: 'https://m.media-amazon.com/images/I/71c0VTbO5bL._AC_SY400_.jpg',
+    description: 'Sport Motorcycle 400cc - High Performance Sport Bike with Modern Design',
+    features: ['400cc Engine', 'Sport Styling', 'LED Lighting', 'Digital Display', 'ABS Brakes'],
+    specifications: {
+      'Engine': '400cc Single Cylinder',
+      'Power': '35 PS @ 9,000 RPM',
+      'Torque': '32 Nm @ 7,500 RPM',
+      'Fuel Tank': '12L',
+      'Warranty': '3 Years'
+    },
+    rating: 4.4,
+    reviews: 98,
+    inStock: true,
+    delivery: 'Free delivery by Tomorrow',
+    emi: 'EMI from ₹9,500/month'
+  },
+  {
+    id: 'bike007',
+    name: 'Adventure Motorcycle 350cc',
+    category: 'automotive',
+    price: 159999,
+    originalPrice: 185000,
+    discount: 14,
+    image: 'https://m.media-amazon.com/images/I/71BOOM2BkaL._AC_SY400_.jpg',
+    description: 'Adventure Motorcycle 350cc - Versatile Adventure Bike for All Terrains',
+    features: ['350cc Engine', 'Adventure Design', 'Comfortable Seating', 'Off-road Ready', 'Durable Build'],
+    specifications: {
+      'Engine': '350cc Single Cylinder',
+      'Power': '28 PS @ 8,500 RPM',
+      'Torque': '25 Nm @ 6,500 RPM',
+      'Fuel Tank': '15L',
+      'Warranty': '3 Years'
+    },
+    rating: 4.3,
+    reviews: 76,
+    inStock: true,
+    delivery: 'Free delivery by Tomorrow',
+    emi: 'EMI from ₹8,000/month'
+  },
+  {
+    id: 'bike008',
+    name: 'Classic Motorcycle 500cc',
+    category: 'automotive',
+    price: 225999,
+    originalPrice: 255000,
+    discount: 11,
+    image: 'https://m.media-amazon.com/images/I/71sbCB+0S5L._AC_SY400_.jpg',
+    description: 'Classic Motorcycle 500cc - Timeless Design with Modern Performance',
+    features: ['500cc Engine', 'Classic Styling', 'Premium Finish', 'Comfortable Ride', 'Reliable Performance'],
+    specifications: {
+      'Engine': '500cc Single Cylinder',
+      'Power': '38 PS @ 8,000 RPM',
+      'Torque': '40 Nm @ 6,000 RPM',
+      'Fuel Tank': '16L',
+      'Warranty': '3 Years'
+    },
+    rating: 4.5,
+    reviews: 112,
+    inStock: true,
+    delivery: 'Free delivery by Tomorrow',
+    emi: 'EMI from ₹11,300/month'
   }
 ];
 
@@ -1026,6 +1095,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Opening account dropdown');
       accountDropdown.style.visibility = 'visible';
       accountDropdown.style.opacity = '1';
+      accountDropdown.style.transform = 'translateY(0)';
       accountDropdown.setAttribute('aria-hidden', 'false');
       isDropdownOpen = true;
     }
@@ -1034,6 +1104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Closing account dropdown');
       accountDropdown.style.visibility = 'hidden';
       accountDropdown.style.opacity = '';
+      accountDropdown.style.transform = '';
       accountDropdown.setAttribute('aria-hidden', 'true');
       accountDropdown.classList.remove('keep-open');
       isDropdownOpen = false;
@@ -1233,33 +1304,54 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.showAllHeadphones = function() {
-    const headphoneProducts = PRODUCTS_DATABASE.filter(p => 
-      p.category === 'Electronics' && 
-      (p.name.toLowerCase().includes('headphone') || p.name.toLowerCase().includes('earphone') || 
-       p.name.toLowerCase().includes('boat') || p.name.toLowerCase().includes('boult') || 
-       p.name.toLowerCase().includes('noise') || p.name.toLowerCase().includes('zebronics'))
-    );
-    showInlineSearchResults('Headphones', headphoneProducts);
+    console.log('showAllHeadphones function called');
+    console.log('Total products in database:', PRODUCTS_DATABASE.length);
+    
+    // Show all products when Explore all is clicked
+    console.log('Showing all products from database');
+    showInlineSearchResults('All Products', PRODUCTS_DATABASE);
   };
 
   window.showAllTVs = function() {
-    const tvProducts = PRODUCTS_DATABASE.filter(p => 
-      p.category === 'Electronics' && 
-      (p.name.toLowerCase().includes('tv') || p.name.toLowerCase().includes('television') || 
-       p.name.toLowerCase().includes('redmi') || p.name.toLowerCase().includes('4k') || 
-       p.name.toLowerCase().includes('premium') || p.name.toLowerCase().includes('big screen'))
-    );
-    showInlineSearchResults('TVs & Screens', tvProducts);
+    console.log('showAllTVs function called');
+    console.log('Total products in database:', PRODUCTS_DATABASE.length);
+    
+    // Show all products when Explore all is clicked
+    console.log('Showing all products from database');
+    showInlineSearchResults('All Products', PRODUCTS_DATABASE);
   };
 
   window.showAllElectronics = function() {
-    const electronicsProducts = PRODUCTS_DATABASE.filter(p => 
-      p.category === 'Electronics' && 
-      (p.name.toLowerCase().includes('phone') || p.name.toLowerCase().includes('laptop') || 
-       p.name.toLowerCase().includes('tablet') || p.name.toLowerCase().includes('ipad') || 
-       p.name.toLowerCase().includes('computer'))
-    );
-    showInlineSearchResults('Electronics', electronicsProducts);
+    console.log('showAllElectronics function called');
+    console.log('Total products in database:', PRODUCTS_DATABASE.length);
+    
+    // Get all electronics products
+    const electronicsProducts = PRODUCTS_DATABASE.filter(p => {
+      const isElectronics = p.category === 'Electronics' && 
+                            (p.name.toLowerCase().includes('phone') || 
+                             p.name.toLowerCase().includes('laptop') || 
+                             p.name.toLowerCase().includes('tablet') || 
+                             p.name.toLowerCase().includes('ipad') || 
+                             p.name.toLowerCase().includes('computer') ||
+                             p.id.includes('phone') ||
+                             p.id.includes('laptop') ||
+                             p.id.includes('ipad') ||
+                             p.id.includes('headset'));
+      
+      console.log(`Product ${p.id}: ${p.name} - Category: ${p.category} - Is Electronics: ${isElectronics}`);
+      return isElectronics;
+    });
+    
+    console.log('Found electronics products:', electronicsProducts.length);
+    console.log('Electronics products:', electronicsProducts);
+    
+    if (electronicsProducts.length > 0) {
+      showInlineSearchResults('Electronics', electronicsProducts);
+    } else {
+      // Show all products if no specific electronics found
+      console.log('No specific electronics found, showing all products');
+      showInlineSearchResults('All Products', PRODUCTS_DATABASE);
+    }
   };
 
   window.showAllBeauty = function() {
@@ -1276,6 +1368,59 @@ document.addEventListener('DOMContentLoaded', () => {
       p.category === 'Automotive' || p.id.includes('bike')
     );
     showInlineSearchResults('Bikes & Motorcycles', bikeProducts);
+  };
+
+  // Function to show all appliances
+  window.showAllAppliances = function() {
+    console.log('showAllAppliances function called');
+    console.log('Total products in database:', PRODUCTS_DATABASE.length);
+    
+    // Get all appliance-related products
+    const applianceProducts = PRODUCTS_DATABASE.filter(p => {
+      const isAppliance = p.category === 'Home & Kitchen' || 
+                          p.id.includes('ac') || 
+                          p.id.includes('ref') || 
+                          p.id.includes('wash') || 
+                          p.id.includes('mic') ||
+                          p.name.toLowerCase().includes('air conditioner') ||
+                          p.name.toLowerCase().includes('refrigerator') ||
+                          p.name.toLowerCase().includes('washing') ||
+                          p.name.toLowerCase().includes('microwave');
+      
+      console.log(`Product ${p.id}: ${p.name} - Category: ${p.category} - Is Appliance: ${isAppliance}`);
+      return isAppliance;
+    });
+    
+    console.log('Found appliance products:', applianceProducts.length);
+    console.log('Appliance products:', applianceProducts);
+    
+    if (applianceProducts.length > 0) {
+      showInlineSearchResults('Appliances for Your Home', applianceProducts);
+    } else {
+      // Show all products if no specific appliances found
+      console.log('No specific appliances found, showing all products');
+      showInlineSearchResults('All Products', PRODUCTS_DATABASE);
+    }
+  };
+
+  // Fallback function to show all products
+  window.showAllProducts = function() {
+    console.log('showAllProducts function called');
+    console.log('Total products in database:', PRODUCTS_DATABASE.length);
+    showInlineSearchResults('All Products', PRODUCTS_DATABASE);
+  };
+
+  // Bike navigation function
+  window.scrollBikes = function(direction) {
+    const bikeImages = document.querySelector('.product-card:has(.product-image-item img[alt*="Bike"]) .product-images');
+    if (bikeImages) {
+      const scrollAmount = 200; // Adjust scroll amount as needed
+      if (direction === 'left') {
+        bikeImages.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else if (direction === 'right') {
+        bikeImages.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
   };
   
   // Function to show search results inline on the same page
@@ -2103,7 +2248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add keyboard navigation for search suggestions
     searchInput.addEventListener('keydown', (e) => {
       const suggestionsDropdown = document.querySelector('.search-suggestions');
-      if (!suggestionsDropdown || suggestionsDropdown.style.display === 'none') return;
+      if (!suggestionsDropdown || !suggestionsDropdown.classList.contains('show')) return;
       
       const suggestions = suggestionsDropdown.querySelectorAll('.search-suggestion:not(.no-results)');
       if (suggestions.length === 0) return;
@@ -2193,7 +2338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     suggestionsDropdown.innerHTML = suggestionsHTML;
-    suggestionsDropdown.style.display = 'block';
+    suggestionsDropdown.classList.add('show');
   }
   
   // Function to get recent searches
@@ -2211,7 +2356,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function hideSearchSuggestions() {
     const suggestionsDropdown = document.querySelector('.search-suggestions');
     if (suggestionsDropdown) {
-      suggestionsDropdown.style.display = 'none';
+      suggestionsDropdown.classList.remove('show');
     }
   }
   
@@ -2520,12 +2665,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResultsSection = document.getElementById('searchResults');
     const productGridSection = document.querySelector('.product-grid');
     
-    // Hide search results section and show product grid
+    // Hide search results section
     if (searchResultsSection) {
       searchResultsSection.style.display = 'none';
     }
+    
+    // Show product grid section
     if (productGridSection) {
-      productGridSection.style.display = 'block';
+      productGridSection.style.display = 'grid';
     }
     
     // Clear search input
@@ -2537,16 +2684,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hide search suggestions if any
     const suggestionsDropdown = document.querySelector('.search-suggestions');
     if (suggestionsDropdown) {
-      suggestionsDropdown.style.display = 'none';
+      suggestionsDropdown.classList.remove('show');
     }
     
-    // Scroll to top smoothly
+    // Reset category dropdown to "All"
+    const categoryDropdown = document.getElementById('categoryDropdown');
+    if (categoryDropdown) {
+      categoryDropdown.value = 'all';
+    }
+    
+    // Scroll to top smoothly to show main page
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
-    // Force a small delay to ensure proper display
+    // Ensure product grid is visible and properly displayed
     setTimeout(() => {
       if (productGridSection) {
-        productGridSection.style.display = 'block';
+        productGridSection.style.display = 'grid';
+        productGridSection.scrollIntoView({ behavior: 'smooth' });
       }
     }, 100);
   };
