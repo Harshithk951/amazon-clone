@@ -1021,9 +1021,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function showSlide(index) {
     if (!carouselContainer || slides.length === 0) return;
     currentIndex = (index + slides.length) % slides.length;
-  const slidePercent = 100 / slides.length;
-  const offset = -currentIndex * slidePercent;
-  carouselContainer.style.transform = `translateX(${offset}%)`;
     slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
     dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
   }
@@ -1055,9 +1052,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hero.addEventListener('mouseleave', startAutoSlide);
   }
 
-  // Initialize positions (use percent translate because slides are 100% width)
-  carouselContainer.style.width = `${slides.length * 100}%`;
-  slides.forEach(s => s.style.width = `${100 / slides.length}%`);
+  // Initialize carousel
   showSlide(0);
   startAutoSlide();
 
