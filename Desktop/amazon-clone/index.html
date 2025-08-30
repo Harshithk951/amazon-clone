@@ -300,58 +300,244 @@
     </div>
   </aside>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-banner">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <!-- Hero Slides -->
       <div class="hero-carousel">
-        <div class="carousel-container">
-          <div class="carousel-slide active">
-            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/WLA/2025/Uber/Unrec_GW/Updated/NewUpdate_DesktopHeroTemplate_3000x1200_ref._CB550300935_.jpg" alt="Amazon Fashion Banner" class="hero-image">
-            <div class="carousel-content">
-              
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/BAU_BTF/Nov/Unrec/Shoes/1/30003._CB542120021_.jpg" alt="Shoes Deals" class="hero-image">
-            <div class="carousel-content">
-              
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="images/banner3.jpg" alt="Home & Kitchen" class="hero-image">
-            <div class="carousel-content">
-             
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="images/banner4.jpg" alt="Electronics & Gadgets" class="hero-image">
-            <div class="carousel-content">
-              
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="images/banner5.jpg" alt="New Arrivals" class="hero-image">
-            <div class="carousel-content">
-              
-            </div>
-          </div>
+        <div class="hero-slide active" data-slide="1">
+          <div class="hero-background" style="background-image: url('https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/BAU_BTF/Nov/Unrec/Shoes/1/30003._CB542120021_.jpg');"></div>
         </div>
-        <button class="carousel-btn prev-btn" aria-label="Previous slide">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        <button class="carousel-btn next-btn" aria-label="Next slide">
-          <i class="fa fa-chevron-right"></i>
-        </button>
-        <div class="carousel-dots">
-          <span class="dot active" data-slide="0"></span>
-          <span class="dot" data-slide="1"></span>
-          <span class="dot" data-slide="2"></span>
-          <span class="dot" data-slide="3"></span>
-          <span class="dot" data-slide="4"></span>
+        <div class="hero-slide" data-slide="2">
+          <div class="hero-background" style="background-image: url('https://images-eu.ssl-images-amazon.com/images/G/31/img25/Media/PC_Hero_3000x1200_Asin-toys-2x._CB547414496_.jpg');"></div>
+        </div>
+        <div class="hero-slide" data-slide="3">
+          <div class="hero-background" style="background-image: url('https://images-eu.ssl-images-amazon.com/images/G/31/img23/Home/2024/Gateway/3000x1200v2._CB584596691_.jpg');"></div>
         </div>
       </div>
-    </section>
 
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <!-- Navigation Arrows -->
+        <button class="hero-arrow hero-arrow-left" onclick="prevSlide()" aria-label="Previous slide">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="hero-arrow hero-arrow-right" onclick="nextSlide()" aria-label="Next slide">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Carousel Dots -->
+        <div class="hero-dots">
+          <span class="dot active" onclick="goToSlide(1)" data-slide="1"></span>
+          <span class="dot" onclick="goToSlide(2)" data-slide="2"></span>
+          <span class="dot" onclick="goToSlide(3)" data-slide="3"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Grids Section -->
+  <section class="product-grids">
+    <div class="container">
+      <div class="grid-row">
+        <!-- Electronics Grid -->
+        <div class="product-grid-card">
+          <h3>Electronics</h3>
+          <div class="grid-items">
+            <div class="grid-item">
+              <img src="images/4K TVs.jpg" alt="4K TVs">
+              <span>4K TVs</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Air Conditioners.jpg" alt="Air Conditioners">
+              <span>Air Conditioners</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/BOULT.jpg" alt="Audio">
+              <span>Audio</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Bathroom accessories.jpg" alt="Home Appliances">
+              <span>Home Appliances</span>
+            </div>
+          </div>
+          <a href="#" class="see-more">See more</a>
+        </div>
+
+        <!-- Fashion Grid -->
+        <div class="product-grid-card">
+          <h3>Fashion</h3>
+          <div class="grid-items">
+            <div class="grid-item">
+              <img src="images/Clothing.jpg" alt="Clothing">
+              <span>Clothing</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Footwear.jpg" alt="Footwear">
+              <span>Footwear</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Watches.jpg" alt="Watches">
+              <span>Watches</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Bags.jpg" alt="Bags">
+              <span>Bags</span>
+            </div>
+          </div>
+          <a href="#" class="see-more">See more</a>
+        </div>
+
+        <!-- Home & Kitchen Grid -->
+        <div class="product-grid-card">
+          <h3>Home & Kitchen</h3>
+          <div class="grid-items">
+            <div class="grid-item">
+              <img src="images/Kitchen.jpg" alt="Kitchen">
+              <span>Kitchen</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Home Decor.jpg" alt="Home Decor">
+              <span>Home Decor</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Furniture.jpg" alt="Furniture">
+              <span>Furniture</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Bedding.jpg" alt="Bedding">
+              <span>Bedding</span>
+            </div>
+          </div>
+          <a href="#" class="see-more">See more</a>
+        </div>
+
+        <!-- Beauty & Personal Care Grid -->
+        <div class="product-grid-card">
+          <h3>Beauty & Personal Care</h3>
+          <div class="grid-items">
+            <div class="grid-item">
+              <img src="images/Skincare.jpg" alt="Skincare">
+              <span>Skincare</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Makeup.jpg" alt="Makeup">
+              <span>Makeup</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Haircare.jpg" alt="Haircare">
+              <span>Haircare</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Fragrances.jpg" alt="Fragrances">
+              <span>Fragrances</span>
+            </div>
+          </div>
+          <a href="#" class="see-more">See more</a>
+        </div>
+      </div>
+
+      <div class="grid-row">
+        <!-- Books Grid -->
+        <div class="product-grid-card">
+          <h3>Books</h3>
+          <div class="grid-items">
+            <div class="grid-item">
+              <img src="images/Fiction.jpg" alt="Fiction">
+              <span>Fiction</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Non-Fiction.jpg" alt="Non-Fiction">
+              <span>Non-Fiction</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Textbooks.jpg" alt="Textbooks">
+              <span>Textbooks</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Children Books.jpg" alt="Children's Books">
+              <span>Children's Books</span>
+            </div>
+          </div>
+          <a href="#" class="see-more">See more</a>
+        </div>
+
+        <!-- Sports & Fitness Grid -->
+        <div class="product-grid-card">
+          <h3>Sports & Fitness</h3>
+          <div class="grid-items">
+            <div class="grid-item">
+              <img src="images/Fitness Equipment.jpg" alt="Fitness Equipment">
+              <span>Fitness Equipment</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Sports Gear.jpg" alt="Sports Gear">
+              <span>Sports Gear</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Outdoor.jpg" alt="Outdoor">
+              <span>Outdoor</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Yoga.jpg" alt="Yoga">
+              <span>Yoga</span>
+            </div>
+          </div>
+          <a href="#" class="see-more">See more</a>
+        </div>
+
+        <!-- Toys & Games Grid -->
+        <div class="product-grid-card">
+          <h3>Toys & Games</h3>
+          <div class="grid-items">
+            <div class="grid-item">
+              <img src="images/Action Figures.jpg" alt="Action Figures">
+              <span>Action Figures</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Board Games.jpg" alt="Board Games">
+              <span>Board Games</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Educational Toys.jpg" alt="Educational Toys">
+              <span>Educational Toys</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Remote Control.jpg" alt="Remote Control">
+              <span>Remote Control</span>
+            </div>
+          </div>
+          <a href="#" class="see-more">See more</a>
+        </div>
+
+        <!-- Automotive Grid -->
+        <div class="product-grid-card">
+          <h3>Automotive</h3>
+          <div class="grid-items">
+            <div class="grid-item">
+              <img src="images/Car Accessories.jpg" alt="Car Accessories">
+              <span>Car Accessories</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Bike Accessories.jpg" alt="Bike Accessories">
+              <span>Bike Accessories</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Car Care.jpg" alt="Car Care">
+              <span>Car Care</span>
+            </div>
+            <div class="grid-item">
+              <img src="images/Tools.jpg" alt="Tools">
+              <span>Tools</span>
+            </div>
+          </div>
+          <a href="#" class="see-more">See more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
     <!-- Search Results Section -->
     <section class="search-results" id="searchResults" style="display: none;">
       <div class="container">
@@ -368,248 +554,6 @@
       </div>
     </section>
 
-    <!-- Product Grid Section -->
-    <section class="product-grid">
-       <!-- Appliances for your home -->
-      <div class="product-card">
-        <h2>Appliances for your home | Up to 55% off</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('ac001')">
-            <img src="images/Air Conditioners.jpg" alt="Air conditioners">
-            <span>Air conditioners</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('ref001')">
-            <img src="images/Refrigerators.jpg" alt="Refrigerators">
-            <span>Refrigerators</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('mic001')">
-            <img src="images/Microwaves.jpg" alt="Microwaves">
-            <span>Microwaves</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('wash001')">
-            <img src="images/Washing machines.jpg" alt="Washing machines">
-            <span>Washing machines</span>
-          </div>
-        </div>
-        <a href="#" class="product-link" onclick="showAllAppliances()">See more</a>
-      </div>
-
-      <!-- Revamp your home in style -->
-      <div class="product-card">
-        <h2>Revamp your home in style</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('bed001')">
-            <img src="images/bedding.jpg" alt="Cushion covers, bedsheets & more">
-            <span>Cushion covers, bedsheets & more</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('dec001')">
-            <img src="images/decor.jpg" alt="Figurines, vases & more">
-            <span>Figurines, vases & more</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('storage001')">
-            <img src="images/storage.jpg" alt="Home storage">
-            <span>Home storage</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('lighting001')">
-            <img src="images/Lighting solutions.jpg" alt="Lighting solutions">
-            <span>Lighting solutions</span>
-          </div>
-        </div>
-        <a href="#" class="product-link" onclick="showAllHomeKitchen()">Explore all</a>
-      </div>
-
-      <!-- Under ₹499 deals -->
-      <div class="product-card">
-        <h2>Under ₹499 | Deals on home improvement essentials</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('cleaning001')">
-            <img src="images/cleaning.jpg" alt="Cleaning supplies">
-            <span>Cleaning supplies</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bathroom001')">
-            <img src="images/Bathroom accessories.jpg" alt="Bathroom accessories">
-            <span>Bathroom accessories</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('tools001')">
-            <img src="images/Home tools.jpg" alt="Home tools">
-            <span>Home tools</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('wallpaper001')">
-            <img src="images/Wallpapers.jpg" alt="Wallpapers">
-            <span>Wallpapers</span>
-          </div>
-        </div>
-        <a href="#" class="product-link" onclick="showAllHomeKitchen()">Explore all</a>
-      </div>
-
-      <!-- Baby care & toys -->
-      <div class="product-card">
-        <h2>Min. 40% off | Baby care & toys | Amazon brands</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('diapers001')">
-            <img src="images/Daipers & Wipes.jpg" alt="Diapers & wipes">
-            <span>Diapers & wipes</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('babyfurniture001')">
-            <img src="images/High chairs, cradles & more.jpg" alt="High chairs, cradles & more">
-            <span>High chairs, cradles & more</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('toys001')">
-            <img src="images/Soft toys.jpg" alt="Soft toys">
-            <span>Soft toys</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('games001')">
-            <img src="images/Indoor & outdoor games.jpg" alt="Indoor & outdoor games">
-            <span>Indoor & outdoor games</span>
-          </div>
-        </div>
-        <a href="#" class="product-link" onclick="showAllBabyCare()">See all offers</a>
-      </div>
-
-      <!-- Headphones -->
-      <div class="product-card">
-        <h2>Starting ₹149 | Headphones</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('boat001')">
-            <img src="images/boAt.jpg" alt="boAt">
-            <span>Starting ₹249 | boAt</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('boult001')">
-            <img src="images/BOULT.jpg" alt="BOULT">
-            <span>Starting ₹349 | BOULT</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('noise001')">
-            <img src="images/Noise.jpg" alt="Noise">
-            <span>Starting ₹649 | Noise</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('zeb001')">
-            <img src="images/Zebronics.jpg" alt="Zebronics">
-            <span>Starting ₹649 | Zebronics</span>
-          </div>
-        </div>
-        <a href="#" class="product-link" onclick="showAllHeadphones()">Explore all</a>
-      </div>
-
-      <!-- TV screens -->
-      <div class="product-card">
-        <h2>Get your desired TV screen size | Starting ₹6,999</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('redmitv001')">
-            <img src="images/Redmi F Series firetv.jpg" alt="Redmi F Series firetv">
-            <span>Redmi F Series firetv</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('tv001')">
-            <img src="images/4K TVs.jpg" alt="4K TVs">
-            <span>4K TVs</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('premiumtv001')">
-            <img src="images/Ultra Premium TVs.jpg" alt="Ultra Premium TVs">
-            <span>Ultra Premium TVs</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bigscreen001')">
-            <img src="images/Ultra Premium TVs.jpg" alt="Big Screens">
-            <span>Big Screens</span>
-          </div>
-        </div>
-        <div class="tv-info">
-          <span>Budget TVs</span>
-          <span>4K TVs</span>
-          <span>EMI from ₹583/month</span>
-        </div>
-        <a href="#" class="product-link" onclick="showAllTVs()">Explore all</a>
-      </div>
-
-      <!-- Electronics -->
-      <div class="product-card">
-        <h2>Electronics | Up to 40% off</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('phone001')">
-            <img src="images/phone.jpg" alt="Smartphones">
-            <span>Smartphones</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('laptop001')">
-            <img src="images/laptop.jpg" alt="Laptops">
-            <span>Laptops</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('ipad001')">
-            <img src="images/ipad.jpg" alt="Tablets">
-            <span>Tablets</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('headset001')">
-            <img src="images/headset.jpg" alt="Headphones">
-            <span>Headphones</span>
-          </div>
-        </div>
-        <a href="#" class="product-link" onclick="showAllElectronics()">Explore all offers</a>
-      </div>
-
-      <!-- Beauty & Personal Care -->
-      <div class="product-card">
-        <h2>Beauty & Personal Care | Up to 60% off</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('lip001')">
-            <img src="images/lipstick.jpg" alt="Makeup">
-            <span>Makeup</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('frag001')">
-            <img src="images/fragrance.jpg" alt="Fragrances">
-            <span>Fragrances</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('keyboard001')">
-            <img src="images/keyboard.jpg" alt="Computer accessories">
-            <span>Computer accessories</span>
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('beautyacc001')">
-            <img src="images/decor.jpg" alt="Beauty accessories">
-            <span>Beauty accessories</span>
-          </div>
-        </div>
-        <a href="#" class="product-link" onclick="showAllBeauty()">Explore all</a>
-      </div>
-
-      <!-- Bikes -->
-      <div class="product-card">
-        <h2>Starting ₹70,348 | Set off on your next great ride</h2>
-        <div class="product-images">
-          <div class="product-image-item" onclick="openProductFromMain('bike001')">
-            <img src="images/Bike1.jpg" alt="Bike1">
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bike002')">
-            <img src="images/Bike2.jpg" alt="Bike2">
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bike003')">
-            <img src="images/Bike3.jpg" alt="Bike3">
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bike004')">
-            <img src="images/Bike4.jpg" alt="Bike4">
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bike005')">
-            <img src="images/Bike5.jpg" alt="Bike5">
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bike006')">
-            <img src="https://m.media-amazon.com/images/I/71c0VTbO5bL._AC_SY400_.jpg" alt="Bike6">
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bike007')">
-            <img src="https://m.media-amazon.com/images/I/71BOOM2BkaL._AC_SY400_.jpg" alt="Bike7">
-          </div>
-          <div class="product-image-item" onclick="openProductFromMain('bike008')">
-            <img src="https://m.media-amazon.com/images/I/71sbCB+0S5L._AC_SY400_.jpg" alt="Bike8">
-          </div>
-        </div>
-        
-        <!-- Navigation Arrows -->
-        <button class="bike-nav-arrow prev" onclick="scrollBikes('left')">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        <button class="bike-nav-arrow next" onclick="scrollBikes('right')">
-          <i class="fa fa-chevron-right"></i>
-        </button>
-        
-        <a href="#" class="product-link" onclick="showAllBikes()">See all offers</a>
-      </div>
-
-
-    </section>
   </main>
 
   <!-- Sign in recommendation section -->
