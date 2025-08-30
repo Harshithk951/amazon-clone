@@ -1047,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startAutoSlide() {
     stopAutoSlide();
-    autoSlideInterval = setInterval(nextSlide, 4500); // 4.5 seconds
+    autoSlideInterval = setInterval(nextSlide, 5000); // 5 seconds for better viewing
   }
   
   function stopAutoSlide() { 
