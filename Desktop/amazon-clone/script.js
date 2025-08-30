@@ -93,7 +93,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹325/month'
   },
-  
+
   // Home & Kitchen
   {
     id: 'bed001',
@@ -141,7 +141,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹45/month'
   },
-  
+
   // Electronics
   {
     id: 'phone001',
@@ -212,7 +212,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹1,250/month'
   },
-  
+
   // Headphones
   {
     id: 'boat001',
@@ -260,7 +260,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹17/month'
   },
-  
+
   // TVs
   {
     id: 'tv001',
@@ -285,7 +285,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹1,250/month'
   },
-  
+
   // Beauty & Personal Care
   {
     id: 'lip001',
@@ -310,7 +310,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹20/month'
   },
-  
+
   // Bikes
   {
     id: 'bike001',
@@ -335,7 +335,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹3,517/month'
   },
-  
+
   // Additional products for better search coverage
   {
     id: 'noise001',
@@ -406,7 +406,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹65/month'
   },
-  
+
   // Home & Kitchen - Additional Products
   {
     id: 'storage001',
@@ -454,7 +454,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹40/month'
   },
-  
+
   // Home Improvement Products
   {
     id: 'cleaning001',
@@ -548,7 +548,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹10/month'
   },
-  
+
   // Baby Care Products
   {
     id: 'diapers001',
@@ -642,7 +642,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹40/month'
   },
-  
+
   // TV Products
   {
     id: 'redmitv001',
@@ -713,7 +713,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹800/month'
   },
-  
+
   // Additional Electronics
   {
     id: 'headset001',
@@ -738,7 +738,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹75/month'
   },
-  
+
   // Additional Beauty Products
   {
     id: 'keyboard001',
@@ -786,7 +786,7 @@ const PRODUCTS_DATABASE = [
     delivery: 'Free delivery by Tomorrow',
     emi: 'EMI from ₹20/month'
   },
-  
+
   // Additional Bikes
   {
     id: 'bike002',
@@ -1065,7 +1065,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function closePrime(){ primePopover.style.opacity = ''; primePopover.style.visibility = ''; primePopover.style.transform = ''; primeTrigger.setAttribute('aria-expanded','false'); primeOpen = false; }
     primeTrigger.addEventListener('click', (e) => { const isTouch = matchMedia('(hover: none)').matches; if (!isTouch) return; e.preventDefault(); e.stopPropagation(); primeOpen ? closePrime() : openPrime(); });
     document.addEventListener('click', (e)=>{ if (!primeOpen) return; if (!primePopover.contains(e.target) && !primeTrigger.contains(e.target)) closePrime(); });
-    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && primeOpen) closePrime(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && primeOpen) closePrime();
+    });
   }
 
   // ---------- Hamburger / All menu ----------
@@ -1085,7 +1087,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const accountDropdown = document.getElementById('accountDropdown');
   if (account && accountDropdown) {
     let isDropdownOpen = false;
-    
+
     function openAccount() {
       console.log('Opening account dropdown');
       accountDropdown.style.visibility = 'visible';
@@ -1094,7 +1096,7 @@ document.addEventListener('DOMContentLoaded', () => {
       accountDropdown.setAttribute('aria-hidden', 'false');
       isDropdownOpen = true;
     }
-    
+
     function closeAccount() {
       console.log('Closing account dropdown');
       accountDropdown.style.visibility = 'hidden';
@@ -1104,35 +1106,35 @@ document.addEventListener('DOMContentLoaded', () => {
       accountDropdown.classList.remove('keep-open');
       isDropdownOpen = false;
     }
-    
+
     // Toggle dropdown on click for all devices
     account.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      
+
       console.log('Account clicked, current state:', isDropdownOpen);
-      
+
       if (isDropdownOpen) {
         closeAccount();
       } else {
         openAccount();
       }
     });
-    
+
     // Close when clicking outside
     document.addEventListener('click', (e) => {
       if (!account.contains(e.target) && !accountDropdown.contains(e.target)) {
         closeAccount();
       }
     });
-    
+
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isDropdownOpen) {
         closeAccount();
       }
     });
-    
+
     // Handle input focus and blur
     const signinInput = document.getElementById('signin-identifier');
     if (signinInput) {
@@ -1141,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         accountDropdown.classList.add('keep-open');
         openAccount();
       });
-      
+
       signinInput.addEventListener('blur', () => {
         console.log('Input blurred, checking if should remove keep-open');
         // Small delay to allow button clicks
@@ -1153,7 +1155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
       });
     }
-    
+
     // Handle Continue button
     const continueBtn = document.getElementById('continueSignin');
     if (continueBtn && signinInput) {
@@ -1166,11 +1168,11 @@ document.addEventListener('DOMContentLoaded', () => {
           signinInput.focus();
           return;
         }
-        
+
         console.log('Value entered:', val);
         // Show confirmation
         alert(`Continue with: ${val}`);
-        
+
         // Clear input and close dropdown
         signinInput.value = '';
         signinInput.classList.remove('error');
@@ -1182,32 +1184,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- Search functionality ----------
   const searchForm = document.getElementById('searchForm');
   const searchInput = document.getElementById('searchInput');
-  
+
   // Search function that shows results inline on the same page
   function searchProducts(query) {
     console.log('searchProducts function called with:', query);
     const trimmedQuery = query.trim().toLowerCase();
     if (!trimmedQuery) return;
-    
+
     console.log(`Searching for: "${query}"`);
-    
+
     // Track search analytics
     trackSearch(trimmedQuery);
-    
+
     // Show loading state
     const searchButton = document.querySelector('.search-button');
     if (searchButton) {
       const originalHTML = searchButton.innerHTML;
       searchButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i>';
       searchButton.disabled = true;
-      
+
       // Reset button after search
       setTimeout(() => {
         searchButton.innerHTML = originalHTML;
         searchButton.disabled = false;
       }, 1000);
     }
-    
+
     // Search in product database
     const searchResults = PRODUCTS_DATABASE.filter(product => 
       product.name.toLowerCase().includes(trimmedQuery) ||
@@ -1215,9 +1217,9 @@ document.addEventListener('DOMContentLoaded', () => {
       product.description.toLowerCase().includes(trimmedQuery) ||
       product.features.some(feature => feature.toLowerCase().includes(trimmedQuery))
     );
-    
+
     console.log(`Found ${searchResults.length} results:`, searchResults);
-    
+
     if (searchResults.length > 0) {
       // Show search results inline on the same page
       showInlineSearchResults(trimmedQuery, searchResults);
@@ -1227,13 +1229,13 @@ document.addEventListener('DOMContentLoaded', () => {
       showNoSearchResults(trimmedQuery);
     }
   }
-  
+
   // Function to track search analytics
   function trackSearch(query) {
     try {
       let searchHistory = JSON.parse(localStorage.getItem('searchHistory') || '[]');
       const existingIndex = searchHistory.findIndex(item => item.query === query);
-      
+
       if (existingIndex >= 0) {
         searchHistory[existingIndex].count++;
         searchHistory[existingIndex].lastSearched = new Date().toISOString();
@@ -1245,20 +1247,20 @@ document.addEventListener('DOMContentLoaded', () => {
           lastSearched: new Date().toISOString()
         });
       }
-      
+
       // Sort by count (most popular first)
       searchHistory.sort((a, b) => b.count - a.count);
-      
+
       // Keep only top 20 searches
       searchHistory = searchHistory.slice(0, 20);
-      
+
       localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
       console.log('Search tracked:', query);
     } catch (error) {
       console.error('Error tracking search:', error);
     }
   }
-  
+
   // Function to open product details in new tab
   function openProductDetails(product) {
     const productDetailsHTML = generateProductDetailsHTML(product);
@@ -1266,7 +1268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     newTab.document.write(productDetailsHTML);
     newTab.document.close();
   }
-  
+
   // Function to open product from main page by ID
   window.openProductFromMain = function(productId) {
     const product = PRODUCTS_DATABASE.find(p => p.id === productId);
@@ -1301,7 +1303,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showAllHeadphones = function() {
     console.log('showAllHeadphones function called');
     console.log('Total products in database:', PRODUCTS_DATABASE.length);
-    
+
     // Show all products when Explore all is clicked
     console.log('Showing all products from database');
     showInlineSearchResults('All Products', PRODUCTS_DATABASE);
@@ -1310,7 +1312,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showAllTVs = function() {
     console.log('showAllTVs function called');
     console.log('Total products in database:', PRODUCTS_DATABASE.length);
-    
+
     // Show all products when Explore all is clicked
     console.log('Showing all products from database');
     showInlineSearchResults('All Products', PRODUCTS_DATABASE);
@@ -1319,7 +1321,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showAllElectronics = function() {
     console.log('showAllElectronics function called');
     console.log('Total products in database:', PRODUCTS_DATABASE.length);
-    
+
     // Get all electronics products
     const electronicsProducts = PRODUCTS_DATABASE.filter(p => {
       const isElectronics = p.category === 'Electronics' && 
@@ -1332,14 +1334,14 @@ document.addEventListener('DOMContentLoaded', () => {
                              p.id.includes('laptop') ||
                              p.id.includes('ipad') ||
                              p.id.includes('headset'));
-      
+
       console.log(`Product ${p.id}: ${p.name} - Category: ${p.category} - Is Electronics: ${isElectronics}`);
       return isElectronics;
     });
-    
+
     console.log('Found electronics products:', electronicsProducts.length);
     console.log('Electronics products:', electronicsProducts);
-    
+
     if (electronicsProducts.length > 0) {
       showInlineSearchResults('Electronics', electronicsProducts);
     } else {
@@ -1369,7 +1371,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showAllAppliances = function() {
     console.log('showAllAppliances function called');
     console.log('Total products in database:', PRODUCTS_DATABASE.length);
-    
+
     // Get all appliance-related products
     const applianceProducts = PRODUCTS_DATABASE.filter(p => {
       const isAppliance = p.category === 'Home & Kitchen' || 
@@ -1381,14 +1383,14 @@ document.addEventListener('DOMContentLoaded', () => {
                           p.name.toLowerCase().includes('refrigerator') ||
                           p.name.toLowerCase().includes('washing') ||
                           p.name.toLowerCase().includes('microwave');
-      
+
       console.log(`Product ${p.id}: ${p.name} - Category: ${p.category} - Is Appliance: ${isAppliance}`);
       return isAppliance;
     });
-    
+
     console.log('Found appliance products:', applianceProducts.length);
     console.log('Appliance products:', applianceProducts);
-    
+
     if (applianceProducts.length > 0) {
       showInlineSearchResults('Appliances for Your Home', applianceProducts);
     } else {
@@ -1417,7 +1419,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   };
-  
+
   // Function to show search results inline on the same page
   function showInlineSearchResults(query, results) {
     const searchResultsSection = document.getElementById('searchResults');
@@ -1425,37 +1427,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResultsCount = document.getElementById('searchResultsCount');
     const searchResultsGrid = document.getElementById('searchResultsGrid');
     const productGridSection = document.querySelector('.product-grid');
-    
+
     // Update search results header
     searchQueryTitle.textContent = `Search results for "${query}"`;
     searchResultsCount.textContent = `${results.length} product${results.length !== 1 ? 's' : ''} found`;
-    
+
     // Generate search results HTML
     const resultsHTML = results.map(product => `
       <div class="search-result-card">
         <img src="${product.image}" alt="${product.name}" class="search-result-image">
         <h3 class="search-result-title">${product.name}</h3>
-        
+
         <div class="search-result-price">₹${product.price.toLocaleString()}</div>
         <div class="search-result-original-price">₹${product.originalPrice.toLocaleString()}</div>
         <div class="search-result-discount">-${product.discount}%</div>
-        
+
         <div class="search-result-rating">
           <div class="search-result-stars">
             ${'★'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '☆' : ''}
           </div>
           <span class="search-result-rating-text">${product.rating} (${product.reviews.toLocaleString()})</span>
         </div>
-        
+
         <div class="search-result-delivery">${product.delivery}</div>
         <div class="search-result-emi">${product.emi}</div>
-        
+
         <div class="search-result-features">
           <ul>
             ${product.features.slice(0, 3).map(feature => `<li>${feature}</li>`).join('')}
           </ul>
         </div>
-        
+
         <div class="search-result-actions">
           <button class="search-result-btn buy-now" onclick="buyNow('${product.id}')">
             <i class="fa fa-shopping-cart"></i> Buy Now
@@ -1466,20 +1468,20 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     `).join('');
-    
+
     // Update the search results grid
     searchResultsGrid.innerHTML = resultsHTML;
-    
+
     // Show search results section and hide product grid
     searchResultsSection.style.display = 'block';
     if (productGridSection) {
       productGridSection.style.display = 'none';
     }
-    
+
     // Scroll to search results
     searchResultsSection.scrollIntoView({ behavior: 'smooth' });
   }
-  
+
   // Function to show no search results
   function showNoSearchResults(query) {
     const searchResultsSection = document.getElementById('searchResults');
@@ -1487,11 +1489,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResultsCount = document.getElementById('searchResultsCount');
     const searchResultsGrid = document.getElementById('searchResultsGrid');
     const productGridSection = document.querySelector('.product-grid');
-    
+
     // Update search results header
     searchQueryTitle.textContent = `No results found for "${query}"`;
     searchResultsCount.textContent = '0 products found';
-    
+
     // Show no results message
     searchResultsGrid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px;">
@@ -1511,19 +1513,19 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     `;
-    
+
     // Show search results section and hide product grid
     searchResultsSection.style.display = 'block';
     if (productGridSection) {
       productGridSection.style.display = 'none';
     }
-    
+
     // Scroll to search results
     searchResultsSection.scrollIntoView({ behavior: 'smooth' });
   }
-  
 
-  
+
+
   // Function to open search results in new tab (kept for backward compatibility)
   function openSearchResults(query, results) {
     const searchResultsHTML = generateSearchResultsHTML(query, results);
@@ -1531,7 +1533,7 @@ document.addEventListener('DOMContentLoaded', () => {
     newTab.document.write(searchResultsHTML);
     newTab.document.close();
   }
-  
+
   // Generate HTML for product details page
   function generateProductDetailsHTML(product) {
     return `
@@ -1551,14 +1553,14 @@ document.addEventListener('DOMContentLoaded', () => {
             padding: 0;
             box-sizing: border-box;
           }
-          
+
           body {
             font-family: 'Amazon Ember', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #f5f5f5;
             color: #0f1111;
             line-height: 1.6;
           }
-          
+
           .header {
             background: #131921;
             padding: 10px 0;
@@ -1566,7 +1568,7 @@ document.addEventListener('DOMContentLoaded', () => {
             top: 0;
             z-index: 1000;
           }
-          
+
           .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -1574,12 +1576,12 @@ document.addEventListener('DOMContentLoaded', () => {
             align-items: center;
             padding: 0 20px;
           }
-          
+
           .amazon-logo {
             height: 30px;
             margin-right: 20px;
           }
-          
+
           .back-btn {
             background: #37475a;
             color: white;
@@ -1590,17 +1592,17 @@ document.addEventListener('DOMContentLoaded', () => {
             font-size: 14px;
             transition: background-color 0.2s;
           }
-          
+
           .back-btn:hover {
             background: #485769;
           }
-          
+
           .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 20px;
           }
-          
+
           .product-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1610,13 +1612,13 @@ document.addEventListener('DOMContentLoaded', () => {
             padding: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
           }
-          
+
           .product-images {
             display: flex;
             flex-direction: column;
             gap: 20px;
           }
-          
+
           .main-image {
             width: 100%;
             height: 400px;
@@ -1625,13 +1627,13 @@ document.addEventListener('DOMContentLoaded', () => {
             border-radius: 8px;
             background: white;
           }
-          
+
           .thumbnail-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
           }
-          
+
           .thumbnail {
             width: 100%;
             height: 80px;
@@ -1642,60 +1644,60 @@ document.addEventListener('DOMContentLoaded', () => {
             transition: border-color 0.2s;
             background: white;
           }
-          
+
           .thumbnail:hover {
             border-color: #e77600;
           }
-          
+
           .product-info {
             display: flex;
             flex-direction: column;
             gap: 20px;
           }
-          
+
           .product-title {
             font-size: 24px;
             font-weight: 600;
             color: #0f1111;
             line-height: 1.3;
           }
-          
+
           .product-rating {
             display: flex;
             align-items: center;
             gap: 10px;
           }
-          
+
           .stars {
             color: #ffa41c;
             font-size: 18px;
           }
-          
+
           .rating-text {
             color: #007185;
             font-size: 14px;
             cursor: pointer;
           }
-          
+
           .price-section {
             display: flex;
             align-items: baseline;
             gap: 15px;
             margin: 20px 0;
           }
-          
+
           .current-price {
             font-size: 28px;
             font-weight: 600;
             color: #0f1111;
           }
-          
+
           .original-price {
             font-size: 18px;
             color: #565959;
             text-decoration: line-through;
           }
-          
+
           .discount {
             background: #cc0c39;
             color: white;
@@ -1704,44 +1706,44 @@ document.addEventListener('DOMContentLoaded', () => {
             font-size: 14px;
             font-weight: 500;
           }
-          
+
           .delivery-info {
             background: #f8f9fa;
             padding: 15px;
             border-radius: 6px;
             border-left: 4px solid #00a8e1;
           }
-          
+
           .delivery-text {
             color: #007185;
             font-size: 14px;
             font-weight: 500;
           }
-          
+
           .emi-info {
             color: #565959;
             font-size: 14px;
             margin-top: 5px;
           }
-          
+
           .product-description {
             color: #0f1111;
             font-size: 16px;
             line-height: 1.6;
           }
-          
+
           .features-list {
             list-style: none;
             margin: 20px 0;
           }
-          
+
           .features-list li {
             padding: 8px 0;
             border-bottom: 1px solid #f0f0f0;
             position: relative;
             padding-left: 25px;
           }
-          
+
           .features-list li:before {
             content: '✓';
             position: absolute;
@@ -1749,50 +1751,50 @@ document.addEventListener('DOMContentLoaded', () => {
             color: #00a8e1;
             font-weight: bold;
           }
-          
+
           .specifications {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 6px;
             margin: 20px 0;
           }
-          
+
           .spec-title {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 15px;
             color: #0f1111;
           }
-          
+
           .spec-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
           }
-          
+
           .spec-item {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
             border-bottom: 1px solid #e0e0e0;
           }
-          
+
           .spec-label {
             font-weight: 500;
             color: #565959;
           }
-          
+
           .spec-value {
             color: #0f1111;
             font-weight: 500;
           }
-          
+
           .action-buttons {
             display: flex;
             gap: 15px;
             margin: 30px 0;
           }
-          
+
           .btn-buy-now {
             background: #ffd814;
             color: #0f1111;
@@ -1805,11 +1807,11 @@ document.addEventListener('DOMContentLoaded', () => {
             transition: background-color 0.2s;
             flex: 1;
           }
-          
+
           .btn-buy-now:hover {
             background: #f7ca00;
           }
-          
+
           .btn-add-cart {
             background: #ffa41c;
             color: #0f1111;
@@ -1822,38 +1824,38 @@ document.addEventListener('DOMContentLoaded', () => {
             transition: background-color 0.2s;
             flex: 1;
           }
-          
+
           .btn-add-cart:hover {
             background: #f08804;
           }
-          
+
           .stock-status {
             display: flex;
             align-items: center;
             gap: 8px;
             margin: 20px 0;
           }
-          
+
           .in-stock {
             color: #007600;
             font-weight: 500;
           }
-          
+
           .stock-icon {
             color: #007600;
           }
-          
+
           @media (max-width: 768px) {
             .product-container {
               grid-template-columns: 1fr;
               gap: 20px;
               padding: 20px;
             }
-            
+
             .spec-grid {
               grid-template-columns: 1fr;
             }
-            
+
             .action-buttons {
               flex-direction: column;
             }
@@ -1869,7 +1871,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </button>
           </div>
         </header>
-        
+
         <div class="container">
           <div class="product-container">
             <div class="product-images">
@@ -1881,10 +1883,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${product.image}" alt="${product.name}" class="thumbnail" onclick="changeMainImage(this.src)">
               </div>
             </div>
-            
+
             <div class="product-info">
               <h1 class="product-title">${product.name}</h1>
-              
+
               <div class="product-rating">
                 <div class="stars">
                   ${'★'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '☆' : ''}
@@ -1892,29 +1894,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="rating-text">${product.rating} out of 5</span>
                 <span class="rating-text">${product.reviews.toLocaleString()} ratings</span>
               </div>
-              
+
               <div class="price-section">
                 <span class="current-price">₹${product.price.toLocaleString()}</span>
                 <span class="original-price">₹${product.originalPrice.toLocaleString()}</span>
                 <span class="discount">-${product.discount}%</span>
               </div>
-              
+
               <div class="delivery-info">
                 <div class="delivery-text">${product.delivery}</div>
                 <div class="emi-info">${product.emi}</div>
               </div>
-              
+
               <div class="stock-status">
                 <i class="fa fa-check-circle stock-icon"></i>
                 <span class="in-stock">In Stock</span>
               </div>
-              
+
               <p class="product-description">${product.description}</p>
-              
+
               <ul class="features-list">
                 ${product.features.map(feature => `<li>${feature}</li>`).join('')}
               </ul>
-              
+
               <div class="specifications">
                 <h3 class="spec-title">Technical Specifications</h3>
                 <div class="spec-grid">
@@ -1926,7 +1928,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   ).join('')}
                 </div>
               </div>
-              
+
               <div class="action-buttons">
                 <button class="btn-buy-now" onclick="buyNow('${product.id}')">
                   <i class="fa fa-shopping-cart"></i> Buy Now
@@ -1938,17 +1940,17 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
         </div>
-        
+
         <script>
           function changeMainImage(src) {
             document.getElementById('mainImage').src = src;
           }
-          
+
           function buyNow(productId) {
             alert('Redirecting to checkout for product: ' + productId);
             // Here you would typically redirect to a checkout page
           }
-          
+
           function addToCart(productId) {
             alert('Product added to cart: ' + productId);
             // Here you would typically add the product to cart
@@ -1958,7 +1960,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </html>
     `;
   }
-  
+
   // Generate HTML for search results page
   function generateSearchResultsHTML(query, results) {
     return `
@@ -1978,14 +1980,14 @@ document.addEventListener('DOMContentLoaded', () => {
             padding: 0;
             box-sizing: border-box;
           }
-          
+
           body {
             font-family: 'Amazon Ember', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #f5f5f5;
             color: #0f1111;
             line-height: 1.6;
           }
-          
+
           .header {
             background: #131921;
             padding: 10px 0;
@@ -1993,7 +1995,7 @@ document.addEventListener('DOMContentLoaded', () => {
             top: 0;
             z-index: 1000;
           }
-          
+
           .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -2001,12 +2003,12 @@ document.addEventListener('DOMContentLoaded', () => {
             align-items: center;
             padding: 0 20px;
           }
-          
+
           .amazon-logo {
             height: 30px;
             margin-right: 20px;
           }
-          
+
           .back-btn {
             background: #37475a;
             color: white;
@@ -2017,17 +2019,17 @@ document.addEventListener('DOMContentLoaded', () => {
             font-size: 14px;
             transition: background-color 0.2s;
           }
-          
+
           .back-btn:hover {
             background: #485769;
           }
-          
+
           .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 20px;
           }
-          
+
           .search-header {
             background: white;
             padding: 20px;
@@ -2035,25 +2037,25 @@ document.addEventListener('DOMContentLoaded', () => {
             margin-bottom: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
           }
-          
+
           .search-query {
             font-size: 24px;
             font-weight: 600;
             color: #0f1111;
             margin-bottom: 10px;
           }
-          
+
           .results-count {
             color: #565959;
             font-size: 14px;
           }
-          
+
           .results-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
           }
-          
+
           .result-card {
             background: white;
             border-radius: 8px;
@@ -2062,12 +2064,12 @@ document.addEventListener('DOMContentLoaded', () => {
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
           }
-          
+
           .result-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
           }
-          
+
           .result-image {
             width: 100%;
             height: 200px;
@@ -2077,7 +2079,7 @@ document.addEventListener('DOMContentLoaded', () => {
             background: white;
             margin-bottom: 15px;
           }
-          
+
           .result-title {
             font-size: 16px;
             font-weight: 600;
@@ -2085,21 +2087,21 @@ document.addEventListener('DOMContentLoaded', () => {
             margin-bottom: 10px;
             line-height: 1.4;
           }
-          
+
           .result-price {
             font-size: 20px;
             font-weight: 600;
             color: #0f1111;
             margin-bottom: 5px;
           }
-          
+
           .result-original-price {
             color: #565959;
             text-decoration: line-through;
             font-size: 14px;
             margin-bottom: 10px;
           }
-          
+
           .result-discount {
             background: #cc0c39;
             color: white;
@@ -2110,30 +2112,30 @@ document.addEventListener('DOMContentLoaded', () => {
             display: inline-block;
             margin-bottom: 10px;
           }
-          
+
           .result-rating {
             display: flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 15px;
           }
-          
+
           .result-stars {
             color: #ffa41c;
             font-size: 14px;
           }
-          
+
           .result-rating-text {
             color: #007185;
             font-size: 12px;
           }
-          
+
           .result-delivery {
             color: #007185;
             font-size: 12px;
             font-weight: 500;
           }
-          
+
           .view-details-btn {
             background: #ffd814;
             color: #0f1111;
@@ -2146,11 +2148,11 @@ document.addEventListener('DOMContentLoaded', () => {
             transition: background-color 0.2s;
             width: 100%;
           }
-          
+
           .view-details-btn:hover {
             background: #f7ca00;
           }
-          
+
           @media (max-width: 768px) {
             .results-grid {
               grid-template-columns: 1fr;
@@ -2167,13 +2169,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </button>
           </div>
         </header>
-        
+
         <div class="container">
           <div class="search-header">
             <h1 class="search-query">Search results for "${query}"</h1>
             <p class="results-count">${results.length} product${results.length !== 1 ? 's' : ''} found</p>
           </div>
-          
+
           <div class="results-grid">
             ${results.map(product => `
               <div class="result-card" onclick="openProductDetails('${product.id}')">
@@ -2194,14 +2196,14 @@ document.addEventListener('DOMContentLoaded', () => {
             `).join('')}
           </div>
         </div>
-        
+
         <script>
           function openProductDetails(productId) {
             const product = ${JSON.stringify(results.find(p => p.id === productId))};
             if (product) {
               const productDetailsHTML = \`${generateProductDetailsHTML.toString().replace(/`/g, '\\`')}\`;
               const newTab = window.open('', '_blank');
-              newTab.document.write(productDetailsHTML(product));
+              newTab.document.write(productDetailsHTML);
               newTab.document.close();
             }
           }
@@ -2210,16 +2212,16 @@ document.addEventListener('DOMContentLoaded', () => {
       </html>
     `;
   }
-  
+
   if (searchForm && searchInput) {
     console.log('Search form and input found:', { searchForm, searchInput });
-    
+
     searchForm.addEventListener('submit', (e) => { 
       e.preventDefault(); 
       const query = searchInput.value.trim(); 
       if (query) searchProducts(query); 
     });
-    
+
     // Add search button click handler
     const searchButton = searchForm.querySelector('.search-button');
     if (searchButton) {
@@ -2229,7 +2231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (query) searchProducts(query);
       });
     }
-    
+
     // Add search suggestions
     searchInput.addEventListener('input', (e) => {
       const query = e.target.value.trim();
@@ -2239,15 +2241,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideSearchSuggestions();
       }
     });
-    
+
     // Add keyboard navigation for search suggestions
     searchInput.addEventListener('keydown', (e) => {
       const suggestionsDropdown = document.querySelector('.search-suggestions');
       if (!suggestionsDropdown || !suggestionsDropdown.classList.contains('show')) return;
-      
+
       const suggestions = suggestionsDropdown.querySelectorAll('.search-suggestion:not(.no-results)');
       if (suggestions.length === 0) return;
-      
+
       let currentIndex = -1;
       suggestions.forEach((suggestion, index) => {
         if (suggestion.classList.contains('selected')) {
@@ -2255,7 +2257,7 @@ document.addEventListener('DOMContentLoaded', () => {
           suggestion.classList.remove('selected');
         }
       });
-      
+
       if (e.key === 'ArrowDown') {
         e.preventDefault();
         currentIndex = (currentIndex + 1) % suggestions.length;
@@ -2271,7 +2273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideSearchSuggestions();
       }
     });
-    
+
     // Hide suggestions when clicking outside
     document.addEventListener('click', (e) => {
       if (!searchForm.contains(e.target)) {
@@ -2279,7 +2281,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-  
+
   // Function to show search suggestions
   function showSearchSuggestions(query) {
     const suggestions = PRODUCTS_DATABASE.filter(product => 
@@ -2287,9 +2289,9 @@ document.addEventListener('DOMContentLoaded', () => {
       product.category.toLowerCase().includes(query.toLowerCase()) ||
       product.description.toLowerCase().includes(query.toLowerCase())
     ).slice(0, 5);
-    
+
     let suggestionsHTML = '';
-    
+
     // Add recent searches if query is empty or short
     if (query.length <= 1) {
       const recentSearches = getRecentSearches();
@@ -2303,7 +2305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
       }
     }
-    
+
     if (suggestions.length > 0) {
       suggestionsHTML += suggestions.map(product => `
         <div class="search-suggestion" onclick="selectSuggestion('${product.name}')">
@@ -2323,7 +2325,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `).join('');
     }
-    
+
     // Create or update suggestions dropdown
     let suggestionsDropdown = document.querySelector('.search-suggestions');
     if (!suggestionsDropdown) {
@@ -2331,11 +2333,11 @@ document.addEventListener('DOMContentLoaded', () => {
       suggestionsDropdown.className = 'search-suggestions';
       searchForm.appendChild(suggestionsDropdown);
     }
-    
+
     suggestionsDropdown.innerHTML = suggestionsHTML;
     suggestionsDropdown.classList.add('show');
   }
-  
+
   // Function to get recent searches
   function getRecentSearches() {
     try {
@@ -2346,7 +2348,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return [];
     }
   }
-  
+
   // Function to hide search suggestions
   function hideSearchSuggestions() {
     const suggestionsDropdown = document.querySelector('.search-suggestions');
@@ -2354,14 +2356,14 @@ document.addEventListener('DOMContentLoaded', () => {
       suggestionsDropdown.classList.remove('show');
     }
   }
-  
+
   // Function to select a search suggestion
   function selectSuggestion(productName) {
     searchInput.value = productName;
     hideSearchSuggestions();
     searchProducts(productName);
   }
-  
+
   // Global functions for product actions
   window.buyNow = function(productId) {
     const product = PRODUCTS_DATABASE.find(p => p.id === productId);
@@ -2371,7 +2373,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Buy Now clicked for product:', productId);
     }
   };
-  
+
   // Professional Cart Management System
   class CartManager {
     constructor() {
@@ -2409,7 +2411,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!product) return false;
 
       const existingItem = this.cart.find(item => item.id === productId);
-      
+
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
@@ -2457,7 +2459,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartDisplay() {
       const cartCountElement = document.querySelector('.cart-count');
       const cartItemsCountElement = document.querySelector('.cart-items-count');
-      const cartTotalElement = document.querySelector('.cart-total-amount');
+      const cartTotalAmountElement = document.querySelector('.cart-total-amount');
       const cartItemsElement = document.getElementById('cartItems');
       const cartCheckoutBtn = document.querySelector('.cart-checkout-btn');
 
@@ -2478,8 +2480,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Update total amount
-      if (cartTotalElement) {
-        cartTotalElement.textContent = `₹${totalAmount.toLocaleString()}`;
+      if (cartTotalAmountElement) {
+        cartTotalAmountElement.textContent = `₹${totalAmount.toLocaleString()}`;
       }
 
       // Update cart items display
@@ -2535,7 +2537,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span>Added to cart: ${product.name}</span>
         </div>
       `;
-      
+
       // Add styles
       notification.style.cssText = `
         position: fixed;
@@ -2599,7 +2601,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartBtn.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          
+
           if (isCartOpen) {
             closeCart();
           } else {
@@ -2639,12 +2641,12 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Your cart is empty. Please add some products first.');
       return;
     }
-    
+
     const total = cartManager.getCartTotal();
     const items = cartManager.getCartCount();
-    
+
     console.log(`Proceeding to checkout with ${items} item${items !== 1 ? 's' : ''}\nTotal: ₹${total.toLocaleString()}`);
-    
+
     // Redirect to login page
     window.location.href = 'login.html';
   };
@@ -2655,42 +2657,42 @@ document.addEventListener('DOMContentLoaded', () => {
       cartManager.clearCart();
     }
   };
-  
+
   window.closeSearchResults = function() {
     const searchResultsSection = document.getElementById('searchResults');
     const productGridSection = document.querySelector('.product-grid');
-    
+
     // Hide search results section
     if (searchResultsSection) {
       searchResultsSection.style.display = 'none';
     }
-    
+
     // Show product grid section
     if (productGridSection) {
       productGridSection.style.display = 'grid';
     }
-    
+
     // Clear search input
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
       searchInput.value = '';
     }
-    
+
     // Hide search suggestions if any
     const suggestionsDropdown = document.querySelector('.search-suggestions');
     if (suggestionsDropdown) {
       suggestionsDropdown.classList.remove('show');
     }
-    
+
     // Reset category dropdown to "All"
     const categoryDropdown = document.getElementById('categoryDropdown');
     if (categoryDropdown) {
       categoryDropdown.value = 'all';
     }
-    
+
     // Scroll to top smoothly to show main page
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
+
     // Ensure product grid is visible and properly displayed
     setTimeout(() => {
       if (productGridSection) {
