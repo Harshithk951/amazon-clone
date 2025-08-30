@@ -305,41 +305,38 @@
     <div class="hero-container">
       <!-- Hero Slides -->
       <div class="hero-carousel">
-        <div class="hero-slide active" data-slide="1">
+        <div class="hero-slide active" data-slide="0">
           <div class="hero-background" style="background-image: url('https://images-eu.ssl-images-amazon.com/images/G/31/img21/MA2025/GW/BAU/Unrec/PC/934044815._CB551384116_.jpg');"></div>
         </div>
-        <div class="hero-slide" data-slide="2">
+        <div class="hero-slide" data-slide="1">
           <div class="hero-background" style="background-image: url('https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/BAU_BTF/Nov/Unrec/Shoes/1/30003._CB542120021_.jpg');"></div>
         </div>
-        <div class="hero-slide" data-slide="3">
+        <div class="hero-slide" data-slide="2">
           <div class="hero-background" style="background-image: url('https://images-eu.ssl-images-amazon.com/images/G/31/img25/Media/PC_Hero_3000x1200_Asin-toys-2x._CB547414496_.jpg');"></div>
         </div>
-        <div class="hero-slide" data-slide="4">
+        <div class="hero-slide" data-slide="3">
           <div class="hero-background" style="background-image: url('https://images-eu.ssl-images-amazon.com/images/G/31/img23/Home/2024/Gateway/3000x1200v2._CB584596691_.jpg');"></div>
         </div>
-        <div class="hero-slide" data-slide="5">
+        <div class="hero-slide" data-slide="4">
           <div class="hero-background" style="background-image: url('https://images-eu.ssl-images-amazon.com/images/G/31/img22/Electronics/Camera/BAU/GW/Hero/3000x1200_Mobile_Optics._CB622950821_.jpg');"></div>
         </div>
       </div>
 
-      <!-- Hero Content -->
-      <div class="hero-content">
-        <!-- Navigation Arrows -->
-        <button class="hero-arrow hero-arrow-left" aria-label="Previous slide">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="hero-arrow hero-arrow-right" aria-label="Next slide">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        
-        <!-- Carousel Dots -->
-        <div class="hero-dots">
-          <span class="dot active" data-slide="1"></span>
-          <span class="dot" data-slide="2"></span>
-          <span class="dot" data-slide="3"></span>
-          <span class="dot" data-slide="4"></span>
-          <span class="dot" data-slide="5"></span>
-        </div>
+      <!-- Navigation Arrows -->
+      <button class="hero-arrow hero-arrow-left" onclick="prevSlide()" aria-label="Previous slide">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="hero-arrow hero-arrow-right" onclick="nextSlide()" aria-label="Next slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      
+      <!-- Carousel Dots -->
+      <div class="hero-dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+        <span class="dot" onclick="goToSlide(4)"></span>
       </div>
     </div>
   </section>

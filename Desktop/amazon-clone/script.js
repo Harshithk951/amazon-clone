@@ -1011,43 +1011,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Carousel (hero) ----------
   const slides = Array.from(document.querySelectorAll('.hero-slide'));
-  const prevBtn = document.querySelector('.hero-arrow-left');
-  const nextBtn = document.querySelector('.hero-arrow-right');
   const dots = Array.from(document.querySelectorAll('.hero-dots .dot'));
   let currentIndex = 0;
   let autoSlideInterval = null;
 
   function showSlide(index) {
     if (slides.length === 0) return;
-    currentIndex = (index + slides.length) % slides.length;
-    slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    
+    // Ensure index is within bounds
+    currentIndex = ((index % slides.length) + slides.length) % slides.length;
+    
+    // Update slides
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentIndex);
+    });
+    
+    // Update dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
   }
 
-  function nextSlide() { showSlide(currentIndex + 1); }
-  function prevSlide() { showSlide(currentIndex - 1); }
+  function nextSlide() { 
+    showSlide(currentIndex + 1);
+    resetAutoSlide();
+  }
+  
+  function prevSlide() { 
+    showSlide(currentIndex - 1);
+    resetAutoSlide();
+  }
 
   // Global functions for onclick handlers
   window.nextSlide = nextSlide;
   window.prevSlide = prevSlide;
-  window.goToSlide = function(slideNum) {
-    showSlide(slideNum - 1);
+  window.goToSlide = function(slideIndex) {
+    showSlide(slideIndex);
     resetAutoSlide();
   };
 
-  if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
-  if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
-
-  dots.forEach((dot, idx) => { 
-    dot.addEventListener('click', () => { 
-      showSlide(idx); 
-      resetAutoSlide(); 
-    }); 
-  });
-
   function startAutoSlide() {
     stopAutoSlide();
-    autoSlideInterval = setInterval(nextSlide, 5000); // 5 seconds for better viewing
+    autoSlideInterval = setInterval(() => {
+      showSlide(currentIndex + 1);
+    }, 4000); // 4 seconds auto-slide
   }
   
   function stopAutoSlide() { 
@@ -1075,8 +1082,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initialize carousel
-  showSlide(0);
-  startAutoSlide();
+  if (slides.length > 0) {
+    showSlide(0);
+    startAutoSlide();
+  }
 
   // ---------- Prime popover (mobile toggle) ----------
   const primeTrigger = document.getElementById('primeTrigger');
