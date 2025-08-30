@@ -2848,7 +2848,7 @@ html {
 .product-grids {
   background: transparent;
   padding: 20px 0 40px 0;
-  margin-top: -120px;
+  margin-top: -200px;
   position: relative;
   z-index: 5;
 }
@@ -2867,20 +2867,20 @@ html {
 }
 
 .product-grid-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: transparent;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
 }
 
 .product-grid-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .product-grid-card h3 {
@@ -2945,7 +2945,7 @@ html {
   }
   
   .product-grids {
-    margin-top: -150px;
+    margin-top: -180px;
     padding: 30px 0;
   }
 }
@@ -2958,7 +2958,7 @@ html {
   }
   
   .product-grids {
-    margin-top: -120px;
+    margin-top: -160px;
     padding: 20px 0;
   }
   
@@ -2998,5 +2998,9 @@ html {
   
   .grid-item img {
     height: 70px;
+  }
+  
+  .product-grids {
+    margin-top: -140px;
   }
 }
